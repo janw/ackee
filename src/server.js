@@ -133,6 +133,11 @@ const routes = [
 		response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
 		response.end(await tracker)
 	}) : undefined,
+	config.baseUrl !== '' ? get(config.baseUrl, (request, response) => {
+		response.statusCode = 302
+		response.setHeader('Location', `${ config.baseUrl }/`)
+		response.end()
+	}) : undefined,
 
 	post(graphqlPath, awaitedHandler(apolloHandler)),
 	get(graphqlPath, awaitedHandler(apolloHandler)),
