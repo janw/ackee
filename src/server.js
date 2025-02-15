@@ -98,7 +98,7 @@ const apolloServer = createApolloServer(ApolloServer, {
 	context: createMicroContext,
 })
 
-const graphqlPath = '/api'
+const graphqlPath = `${ config.baseUrl }/api`
 const apolloHandler = apolloServer
 	.start()
 	.then(() => apolloServer.createHandler({ path: graphqlPath }))
