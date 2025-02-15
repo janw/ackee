@@ -8,20 +8,12 @@ on:
     paths-ignore:
       - '**.md'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
-  cancel:
-
-    name: 'Cancel previous runs'
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-
-    steps:
-      - uses: styfle/cancel-workflow-action@0.5.0
-        with:
-          access_token: ${{ github.token }}
-
   build:
-
     name: 'Build and test'
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
@@ -49,20 +41,19 @@ jobs:
       - run: yarn coveralls
 
       - name: Parallel Coveralls report
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ github.token }}
-          flag-name: run-${{ matrix.test_number }}
+          flag-name: run-${{ join(matrix.*, '-') }}
           parallel: true
 
   coveralls:
-
     needs: build
     runs-on: ubuntu-latest
 
     steps:
       - name: Finished Coveralls report
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ github.token }}
           parallel-finished: true
