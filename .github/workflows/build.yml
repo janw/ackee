@@ -4,9 +4,6 @@ on:
   pull_request:
     paths-ignore:
       - '**.md'
-  push:
-    paths-ignore:
-      - '**.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -19,6 +16,7 @@ jobs:
     timeout-minutes: 10
 
     strategy:
+      fail-fast: false
       matrix:
         node-version:
           - 18.x
