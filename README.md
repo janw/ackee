@@ -7,8 +7,9 @@
 
 <img src="https://raw.githubusercontent.com/janw/ackee/refs/heads/main/.assets/icon.png" title="Ackee" alt="Ackee logo" width="128">
 
-![Build](https://github.com/janw/ackee/workflows/Build/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/janw/ackee/badge.svg?branch=main)](https://coveralls.io/github/janw/ackee?branch=main)
+![Docker Build](https://github.com/janw/ackee/workflows/docker-build/badge.svg)
+![Tests](https://github.com/janw/ackee/workflows/tests/badge.svg)
+[![Code Coverage](https://codecov.io/gh/janw/ackee/graph/badge.svg?token=84kXrmibGX)](https://codecov.io/gh/janw/ackee)
 
 Self-hosted, Node.js-based analytics tool for those who care about privacy. Ackee runs on your own server, analyzes the traffic of your websites and provides useful statistics in a minimal interface.
 

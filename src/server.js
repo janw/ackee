@@ -11,7 +11,6 @@ const KnownError = require('./utils/KnownError')
 const signale = require('./utils/signale')
 const config = require('./utils/config')
 const findMatchingOrigin = require('./utils/findMatchingOrigin')
-const customTracker = require('./utils/customTracker')
 const createApolloServer = require('./utils/createApolloServer')
 const { createMicroContext } = require('./utils/createContext')
 
@@ -129,10 +128,6 @@ const routes = [
 		response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
 		response.end(await tracker)
 	}),
-	customTracker.exists === true ? get(`${ config.baseUrl }${ customTracker.url }`, async (request, response) => {
-		response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
-		response.end(await tracker)
-	}) : undefined,
 	config.baseUrl !== '' ? get(config.baseUrl, (request, response) => {
 		response.statusCode = 302
 		response.setHeader('Location', `${ config.baseUrl }/`)
