@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = (errors) => {
+export default (errors) => {
 	// Extract message from an error
 	const message = (key) => errors[key].message
 

@@ -1,62 +1,55 @@
-'use strict'
+import { readFile, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import { resolve } from 'node:path';
+import js from 'rosid-handler-js-next';
+import sass from 'rosid-handler-sass';
+import baseUrl from '../utils/baseUrl.js';
+import layout from '../utils/layout.js';
+import log from '../utils/log.js';
 
-const { resolve } = require('path')
-const { writeFile, readFile } = require('fs').promises
+const require = createRequire(import.meta.url);
+const __dirname = import.meta.dirname;
 
-const layout = require('../utils/layout')
-const config = require('../utils/config')
-const baseUrl = require('../utils/baseUrl')
-const signale = require('../utils/signale')
+const DEVELOPMENT = process.env.NODE_ENV === 'development'
 
-const index = () => {
+export const index = () => {
 	return layout('<div id="main"></div>', 'favicon.ico', [ 'index.css' ], [ 'index.js' ], {
-		isDemoMode: config.isDemoMode,
-		customTracker: { exists: false },
+		isDemoMode: false,
 		baseUrl,
 	})
 }
 
-const styles = () => {
-	const sass = require('rosid-handler-sass')
+export const styles = () => {
 	const filePath = resolve(__dirname, './styles/index.scss')
 
-	return sass(filePath, { optimize: config.isDevelopmentMode === false })
+	return sass(filePath, { optimize: !DEVELOPMENT})
 }
 
-const scripts = () => {
-	const js = require('rosid-handler-js-next')
+export const scripts = () => {
 	const filePath = resolve(__dirname, './scripts/index.js')
 
 	return js(filePath, {
-		optimize: config.isDevelopmentMode === false,
-		nodeGlobals: config.isDevelopmentMode === true,
-		replace: { 'process.env.NODE_ENV': JSON.stringify(config.isDevelopmentMode === true ? 'development' : 'production') },
+		optimize: !DEVELOPMENT,
+		nodeGlobals: DEVELOPMENT,
+		replace: { 'process.env.NODE_ENV': process.env.NODE_ENV },
 		babel: false,
 	})
 }
 
-const tracker = () => {
+export const tracker = () => {
 	const filePath = require.resolve('ackee-tracker')
 
 	return readFile(filePath, 'utf8')
 }
 
-const build = async (path, fn) => {
+export const build = async (path, fn) => {
 	try {
-		signale.await(`Building and writing '${ path }'`)
+		log.info(`Building and writing '${ path }'`)
 		const data = await fn()
 		await writeFile(path, data)
-		signale.success(`Finished building '${ path }'`)
+		log.info(`Finished building '${ path }'`)
 	} catch (error) {
-		signale.fatal(error)
+		log.fatal(error)
 		process.exit(1)
 	}
-}
-
-module.exports = {
-	index,
-	styles,
-	scripts,
-	tracker,
-	build,
 }

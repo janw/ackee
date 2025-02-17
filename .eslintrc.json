@@ -1,0 +1,16 @@
+{
+    "root": true,
+    "extends": "@electerious/eslint-config",
+    "rules": {
+        "import/order": 2,
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2,
+                "maxBOF": 0,
+                "maxEOF": 0
+            }
+        ],
+        "import/no-named-as-default": 0
+    }
+}

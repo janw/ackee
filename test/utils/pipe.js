@@ -1,9 +1,7 @@
-'use strict'
+import { v4 as uuid } from 'uuid'
+import test from 'ava'
+import pipe from '../../src/utils/pipe.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const pipe = require('../../src/utils/pipe')
 
 test('return response of first function with a return value', async (t) => {
 	const _b = uuid()
@@ -21,7 +19,7 @@ test('return response of first function with a return value', async (t) => {
 test('pass parameter to functions in pipe', async (t) => {
 	const _a = uuid()
 
-	const a = (param) => param
+	const a = (parameter) => parameter
 
 	const result = await pipe(a)(_a)
 

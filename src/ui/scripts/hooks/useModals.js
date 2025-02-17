@@ -1,5 +1,5 @@
-import { useReducer, useCallback } from 'react'
-import shortId from '../utils/shortId'
+import { useCallback, useReducer } from 'react'
+import shortId from '../utils/shortId.js'
 
 export const ADD_MODAL = Symbol()
 export const REMOVE_MODAL = Symbol()
@@ -19,6 +19,7 @@ const reducer = (state, action) => {
 				},
 			}
 		case REMOVE_MODAL:
+			// eslint-disable-next-line no-case-declarations
 			const clone = { ...state }
 			delete clone[action.modalId]
 			return clone

@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = (ids) => {
+export default (ids) => {
 	const stage = {
 		$match: {},
 	}

@@ -1,8 +1,6 @@
-'use strict'
+import test from 'ava'
+import systems from '../../src/constants/systems.js'
 
-const test = require('ava')
-
-const systems = require('../../src/constants/systems')
 
 test('is an object', (t) => {
 	t.is(typeof systems, 'object')

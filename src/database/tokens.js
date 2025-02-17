@@ -1,6 +1,4 @@
-'use strict'
-
-const Token = require('../models/Token')
+import Token from '../models/Token.js'
 
 const response = (entry) => ({
 	id: entry.id,
@@ -52,7 +50,7 @@ const del = (id) => {
 	})
 }
 
-module.exports = {
+export default {
 	add,
 	get,
 	update,

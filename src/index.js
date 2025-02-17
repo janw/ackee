@@ -1,44 +1,44 @@
 #!/usr/bin/env node
-'use strict'
-require('dotenv').config()
 
-const server = require('./server')
-const signale = require('./utils/signale')
-const config = require('./utils/config')
-const connect = require('./utils/connect')
-const stripUrlAuth = require('./utils/stripUrlAuth')
+import 'dotenv/config'
+import app from './server.js'
+import config from './utils/config.js'
+import connect from './utils/connect.js'
+import log from './utils/log.js'
 
 if (config.dbUrl == null) {
-	signale.fatal('MongoDB connection URI missing in environment')
+	log.fatal('MongoDB connection URI missing in environment')
 	process.exit(1)
 }
 
-server.on('listening', () => signale.watch(`Listening on http://localhost:${ config.port }${ config.baseUrl }`))
-server.on('error', (error) => signale.fatal(error))
+try {
+	log.info(`Connecting to ${config.stripUrlAuth}`)
+	await connect(config.dbUrl)
 
-signale.await(`Connecting to ${ stripUrlAuth(config.dbUrl) }`)
+	log.info(`Starting the server`)
+	const server = app.listen(config.port)
+	log.info(`Listening on http://localhost:${config.port}${config.baseUrl}`)
 
-connect(config.dbUrl).then(() => {
-	signale.success(`Connected to ${ stripUrlAuth(config.dbUrl) }`)
-	signale.start(`Starting the server`)
-
-	server.listen(config.port)
-
-	if (config.isDevelopmentMode === true) {
-		signale.info('Development mode enabled')
+	const close = () => {
+		log.info('Terminating server')
+		server.close(() => {
+			log.info('Done')
+			process.exit(0)
+		})
 	}
 
-	if (config.isDemoMode === true) {
-		signale.info('Demo mode enabled')
-	}
+	process.on('SIGTERM', close)
+	process.on('SIGINT', close)
+} catch (error) {
+	log.fatal(error)
+	process.exit(1)
+}
 
-	process.on('SIGTERM', () => {
-		console.log('Terminating')
-		server.close()
-		process.exit(1)
-	})
-})
-	.catch((error) => {
-		signale.fatal(error)
-		process.exit(1)
-	})
+
+if (config.isDevelopmentMode === true) {
+	log.info('Development mode enabled')
+}
+
+if (config.isDemoMode === true) {
+	log.info('Demo mode enabled')
+}

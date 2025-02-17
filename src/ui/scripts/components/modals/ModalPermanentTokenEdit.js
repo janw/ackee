@@ -1,15 +1,13 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import Input from '../Input'
-import Label from '../Label'
-import Spacer from '../Spacer'
-
-import useUpdatePermanentToken from '../../api/hooks/permanentTokens/useUpdatePermanentToken'
-import useDeletePermanentToken from '../../api/hooks/permanentTokens/useDeletePermanentToken'
-import useInputs from '../../hooks/useInputs'
-import commonModalProps from '../../utils/commonModalProps'
-import shortId from '../../utils/shortId'
+import { createElement as h } from 'react'
+import Input from '../Input.js'
+import Label from '../Label.js'
+import Spacer from '../Spacer.js'
+import useDeletePermanentToken from '../../api/hooks/permanentTokens/useDeletePermanentToken.js'
+import useUpdatePermanentToken from '../../api/hooks/permanentTokens/useUpdatePermanentToken.js'
+import useInputs from '../../hooks/useInputs.js'
+import commonModalProps from '../../utils/commonModalProps.js'
+import shortId from '../../utils/shortId.js'
 
 const ModalPermanentTokenEdit = (props) => {
 	const updatePermanentToken = useUpdatePermanentToken(props.id)

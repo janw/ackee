@@ -1,9 +1,7 @@
-'use strict'
-
-const tokens = require('../database/tokens')
-const config = require('../utils/config')
-const KnownError = require('../utils/KnownError')
-const ignoreCookie = require('../utils/ignoreCookie')
+import tokens from '../database/tokens.js'
+import config from '../utils/config.js'
+import ignoreCookie from '../utils/ignoreCookie.js'
+import KnownError from '../utils/KnownError.js'
 
 const response = (entry) => ({
 	id: entry.id,
@@ -11,7 +9,7 @@ const response = (entry) => ({
 	updated: entry.updated,
 })
 
-module.exports = {
+export default {
 	Mutation: {
 		createToken: async (parent, { input }, { setCookies }) => {
 			const { username, password } = input

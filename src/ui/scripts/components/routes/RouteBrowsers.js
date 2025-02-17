@@ -1,11 +1,9 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import useDomains from '../../api/hooks/domains/useDomains'
-import useBrowsers from '../../api/hooks/browsers/useBrowsers'
-
-import CardStatistics from '../cards/CardStatistics'
-import RendererList from '../renderers/RendererList'
+import { createElement as h } from 'react'
+import useBrowsers from '../../api/hooks/browsers/useBrowsers.js'
+import useDomains from '../../api/hooks/domains/useDomains.js'
+import CardStatistics from '../cards/CardStatistics.js'
+import RendererList from '../renderers/RendererList.js'
 
 const RouteBrowsers = (props) => {
 	const domains = useDomains()

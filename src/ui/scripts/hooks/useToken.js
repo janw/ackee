@@ -1,8 +1,6 @@
-import { useReducer, useCallback } from 'react'
-
-import { version } from '../../../../package.json'
-
-import createStorage from '../utils/createStorage'
+import { useCallback, useReducer } from 'react'
+import version from '../../../../package.json'
+import createStorage from '../utils/createStorage.js'
 
 const SET_TOKEN = Symbol()
 const RESET_TOKEN = Symbol()

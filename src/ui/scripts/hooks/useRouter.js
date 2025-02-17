@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useCallback, useState } from 'react'
 import { createHashHistory } from 'history'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import routes, { defaultRoute } from '../constants/routes.js'
 
-import routes, { defaultRoute } from '../constants/routes'
 
 const parseLocation = ({ pathname }) => {
 	const hasRoute = routes.some((route) => route.pattern.match(pathname) != null,

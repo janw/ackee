@@ -1,6 +1,6 @@
-'use strict'
 
-const handler = require('../src/serverless').handler
+
+import handler from '../src/serverless.js'.handler
 
 /**
  * A serverless function handler for the '/api' route, for use with Vercel.

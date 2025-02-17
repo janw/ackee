@@ -1,4 +1,4 @@
-import ranges from '../../../constants/ranges'
+import ranges from '../../../constants/ranges.js'
 
 export default (range) => {
 	return ({

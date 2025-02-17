@@ -1,10 +1,8 @@
-'use strict'
+import { v4 as uuid } from 'uuid'
+import test from 'ava'
+import aggregateActiveVisitors from '../../src/aggregations/aggregateActiveVisitors.js'
+import createDate from '../../src/utils/createDate.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const aggregateActiveVisitors = require('../../src/aggregations/aggregateActiveVisitors')
-const createDate = require('../../src/utils/createDate')
 
 test('return aggregation', (t) => {
 	const result = aggregateActiveVisitors(uuid(), createDate())

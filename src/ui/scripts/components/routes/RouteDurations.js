@@ -1,14 +1,11 @@
-import { createElement as h, Fragment } from 'react'
 import PropTypes from 'prop-types'
-
-import { MODALS_DURATIONS } from '../../constants/modals'
-
-import useDomains from '../../api/hooks/domains/useDomains'
-import useMergedDurations from '../../api/hooks/durations/useMergedDurations'
-import useDurations from '../../api/hooks/durations/useDurations'
-
-import CardStatistics from '../cards/CardStatistics'
-import RendererDurations from '../renderers/RendererDurations'
+import { Fragment, createElement as h } from 'react'
+import modals from '../../constants/modals.js'
+import useDomains from '../../api/hooks/domains/useDomains.js'
+import useDurations from '../../api/hooks/durations/useDurations.js'
+import useMergedDurations from '../../api/hooks/durations/useMergedDurations.js'
+import CardStatistics from '../cards/CardStatistics.js'
+import RendererDurations from '../renderers/RendererDurations.js'
 
 const RouteDurations = (props) => {
 	const domains = useDomains()
@@ -28,7 +25,7 @@ const RouteDurations = (props) => {
 				renderer: RendererDurations,
 				rendererProps: {
 					interval: props.filters.interval,
-					onItemClick: (index) => props.addModal(MODALS_DURATIONS, {
+					onItemClick: (index) => props.addModal(modals.MODALS_DURATIONS, {
 						index,
 						interval: props.filters.interval,
 						limit: 14,

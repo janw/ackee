@@ -1,13 +1,11 @@
-'use strict'
+import permanentTokens from '../database/permanentTokens.js'
+import blockDemoMode from '../middlewares/blockDemoMode.js'
+import requireAuth from '../middlewares/requireAuth.js'
+import KnownError from '../utils/KnownError.js'
+import messages from '../utils/messages.js'
+import pipe from '../utils/pipe.js'
 
-const permanentTokens = require('../database/permanentTokens')
-const KnownError = require('../utils/KnownError')
-const messages = require('../utils/messages')
-const pipe = require('../utils/pipe')
-const requireAuth = require('../middlewares/requireAuth')
-const blockDemoMode = require('../middlewares/blockDemoMode')
-
-module.exports = {
+export default {
 	Query: {
 		permanentToken: pipe(requireAuth, (parent, { id }) => {
 			return permanentTokens.get(id)

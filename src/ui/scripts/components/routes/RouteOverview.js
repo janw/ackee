@@ -1,37 +1,32 @@
-import { createElement as h, Fragment } from 'react'
 import PropTypes from 'prop-types'
-
-import { SORTINGS_TOP } from '../../../../constants/sortings'
-import { RANGES_LAST_24_HOURS } from '../../../../constants/ranges'
-import { INTERVALS_DAILY } from '../../../../constants/intervals'
-import { VIEWS_TYPE_UNIQUE } from '../../../../constants/views'
-import { REFERRERS_TYPE_WITH_SOURCE } from '../../../../constants/referrers'
-import { SYSTEMS_TYPE_WITH_VERSION } from '../../../../constants/systems'
-import { DEVICES_TYPE_WITH_MODEL } from '../../../../constants/devices'
-import { BROWSERS_TYPE_WITH_VERSION } from '../../../../constants/browsers'
-import { SIZES_TYPE_BROWSER_RESOLUTION } from '../../../../constants/sizes'
-
-import { MODALS_VIEWS, MODALS_DURATIONS } from '../../constants/modals'
-
-import useMergedActiveVisitors from '../../api/hooks/facts/useMergedActiveVisitors'
-import useMergedFacts from '../../api/hooks/facts/useMergedFacts'
-import useMergedViews from '../../api/hooks/views/useMergedViews'
-import useMergedDurations from '../../api/hooks/durations/useMergedDurations'
-import useMergedPages from '../../api/hooks/pages/useMergedPages'
-import useMergedReferrers from '../../api/hooks/referrers/useMergedReferrers'
-import useMergedSystems from '../../api/hooks/systems/useMergedSystems'
-import useMergedDevices from '../../api/hooks/devices/useMergedDevices'
-import useMergedBrowsers from '../../api/hooks/browsers/useMergedBrowsers'
-import useMergedSizes from '../../api/hooks/sizes/useMergedSizes'
-import useMergedLanguages from '../../api/hooks/languages/useMergedLanguages'
-
-import CardFacts from '../cards/CardFacts'
-import CardStatistics from '../cards/CardStatistics'
-
-import RendererViews from '../renderers/RendererViews'
-import RendererDurations from '../renderers/RendererDurations'
-import RendererList from '../renderers/RendererList'
-import RendererReferrers from '../renderers/RendererReferrers'
+import { Fragment, createElement as h } from 'react'
+import browsers from '../../../../constants/browsers.js'
+import devices from '../../../../constants/devices.js'
+import intervals from '../../../../constants/intervals.js'
+import ranges from '../../../../constants/ranges.js'
+import referrers from '../../../../constants/referrers.js'
+import sizes from '../../../../constants/sizes.js'
+import sortings from '../../../../constants/sortings.js'
+import systems from '../../../../constants/systems.js'
+import views from '../../../../constants/views.js'
+import modals from '../../constants/modals.js'
+import useMergedBrowsers from '../../api/hooks/browsers/useMergedBrowsers.js'
+import useMergedDevices from '../../api/hooks/devices/useMergedDevices.js'
+import useMergedDurations from '../../api/hooks/durations/useMergedDurations.js'
+import useMergedActiveVisitors from '../../api/hooks/facts/useMergedActiveVisitors.js'
+import useMergedFacts from '../../api/hooks/facts/useMergedFacts.js'
+import useMergedLanguages from '../../api/hooks/languages/useMergedLanguages.js'
+import useMergedPages from '../../api/hooks/pages/useMergedPages.js'
+import useMergedReferrers from '../../api/hooks/referrers/useMergedReferrers.js'
+import useMergedSizes from '../../api/hooks/sizes/useMergedSizes.js'
+import useMergedSystems from '../../api/hooks/systems/useMergedSystems.js'
+import useMergedViews from '../../api/hooks/views/useMergedViews.js'
+import CardFacts from '../cards/CardFacts.js'
+import CardStatistics from '../cards/CardStatistics.js'
+import RendererDurations from '../renderers/RendererDurations.js'
+import RendererList from '../renderers/RendererList.js'
+import RendererReferrers from '../renderers/RendererReferrers.js'
+import RendererViews from '../renderers/RendererViews.js'
 
 const RouteOverview = (props) => {
 	useMergedActiveVisitors()
@@ -50,18 +45,18 @@ const RouteOverview = (props) => {
 				hook: useMergedViews,
 				hookArgs: [
 					{
-						interval: INTERVALS_DAILY,
-						type: VIEWS_TYPE_UNIQUE,
+						interval: intervals.INTERVALS_DAILY,
+						type: views.VIEWS_TYPE_UNIQUE,
 						limit: 14,
 					},
 				],
 				renderer: RendererViews,
 				rendererProps: {
-					interval: INTERVALS_DAILY,
-					onItemClick: (index) => props.addModal(MODALS_VIEWS, {
+					interval: intervals.INTERVALS_DAILY,
+					onItemClick: (index) => props.addModal(modals.MODALS_VIEWS, {
 						index,
-						interval: INTERVALS_DAILY,
-						type: VIEWS_TYPE_UNIQUE,
+						interval: intervals.INTERVALS_DAILY,
+						type: views.VIEWS_TYPE_UNIQUE,
 						limit: 14,
 					}),
 				},
@@ -73,16 +68,16 @@ const RouteOverview = (props) => {
 				hook: useMergedDurations,
 				hookArgs: [
 					{
-						interval: INTERVALS_DAILY,
+						interval: intervals.INTERVALS_DAILY,
 						limit: 14,
 					},
 				],
 				renderer: RendererDurations,
 				rendererProps: {
-					interval: INTERVALS_DAILY,
-					onItemClick: (index) => props.addModal(MODALS_DURATIONS, {
+					interval: intervals.INTERVALS_DAILY,
+					onItemClick: (index) => props.addModal(modals.MODALS_DURATIONS, {
 						index,
-						interval: INTERVALS_DAILY,
+						interval: intervals.INTERVALS_DAILY,
 						limit: 14,
 					}),
 				},
@@ -93,14 +88,14 @@ const RouteOverview = (props) => {
 				hook: useMergedPages,
 				hookArgs: [
 					{
-						sorting: SORTINGS_TOP,
-						range: RANGES_LAST_24_HOURS,
+						sorting: sortings.SORTINGS_TOP,
+						range: ranges.RANGES_LAST_24_HOURS,
 					},
 				],
 				renderer: RendererList,
 				rendererProps: {
-					sorting: SORTINGS_TOP,
-					range: RANGES_LAST_24_HOURS,
+					sorting: sortings.SORTINGS_TOP,
+					range: ranges.RANGES_LAST_24_HOURS,
 				},
 			}),
 			h(CardStatistics, {
@@ -109,15 +104,15 @@ const RouteOverview = (props) => {
 				hook: useMergedReferrers,
 				hookArgs: [
 					{
-						sorting: SORTINGS_TOP,
-						type: REFERRERS_TYPE_WITH_SOURCE,
-						range: RANGES_LAST_24_HOURS,
+						sorting: sortings.SORTINGS_TOP,
+						type: referrers.REFERRERS_TYPE_WITH_SOURCE,
+						range: ranges.RANGES_LAST_24_HOURS,
 					},
 				],
 				renderer: RendererReferrers,
 				rendererProps: {
-					sorting: SORTINGS_TOP,
-					range: RANGES_LAST_24_HOURS,
+					sorting: sortings.SORTINGS_TOP,
+					range: ranges.RANGES_LAST_24_HOURS,
 				},
 			}),
 			h('div', { className: 'content__spacer' }),
@@ -127,15 +122,15 @@ const RouteOverview = (props) => {
 				hook: useMergedSystems,
 				hookArgs: [
 					{
-						sorting: SORTINGS_TOP,
-						type: SYSTEMS_TYPE_WITH_VERSION,
-						range: RANGES_LAST_24_HOURS,
+						sorting: sortings.SORTINGS_TOP,
+						type: systems.SYSTEMS_TYPE_WITH_VERSION,
+						range: ranges.RANGES_LAST_24_HOURS,
 					},
 				],
 				renderer: RendererList,
 				rendererProps: {
-					sorting: SORTINGS_TOP,
-					range: RANGES_LAST_24_HOURS,
+					sorting: sortings.SORTINGS_TOP,
+					range: ranges.RANGES_LAST_24_HOURS,
 				},
 			}),
 			h(CardStatistics, {
@@ -144,15 +139,15 @@ const RouteOverview = (props) => {
 				hook: useMergedDevices,
 				hookArgs: [
 					{
-						sorting: SORTINGS_TOP,
-						type: DEVICES_TYPE_WITH_MODEL,
-						range: RANGES_LAST_24_HOURS,
+						sorting: sortings.SORTINGS_TOP,
+						type: devices.DEVICES_TYPE_WITH_MODEL,
+						range: ranges.RANGES_LAST_24_HOURS,
 					},
 				],
 				renderer: RendererList,
 				rendererProps: {
-					sorting: SORTINGS_TOP,
-					range: RANGES_LAST_24_HOURS,
+					sorting: sortings.SORTINGS_TOP,
+					range: ranges.RANGES_LAST_24_HOURS,
 				},
 			}),
 			h(CardStatistics, {
@@ -161,15 +156,15 @@ const RouteOverview = (props) => {
 				hook: useMergedBrowsers,
 				hookArgs: [
 					{
-						sorting: SORTINGS_TOP,
-						type: BROWSERS_TYPE_WITH_VERSION,
-						range: RANGES_LAST_24_HOURS,
+						sorting: sortings.SORTINGS_TOP,
+						type: browsers.BROWSERS_TYPE_WITH_VERSION,
+						range: ranges.RANGES_LAST_24_HOURS,
 					},
 				],
 				renderer: RendererList,
 				rendererProps: {
-					sorting: SORTINGS_TOP,
-					range: RANGES_LAST_24_HOURS,
+					sorting: sortings.SORTINGS_TOP,
+					range: ranges.RANGES_LAST_24_HOURS,
 				},
 			}),
 			h(CardStatistics, {
@@ -178,15 +173,15 @@ const RouteOverview = (props) => {
 				hook: useMergedSizes,
 				hookArgs: [
 					{
-						sorting: SORTINGS_TOP,
-						type: SIZES_TYPE_BROWSER_RESOLUTION,
-						range: RANGES_LAST_24_HOURS,
+						sorting: sortings.SORTINGS_TOP,
+						type: sizes.SIZES_TYPE_BROWSER_RESOLUTION,
+						range: ranges.RANGES_LAST_24_HOURS,
 					},
 				],
 				renderer: RendererList,
 				rendererProps: {
-					sorting: SORTINGS_TOP,
-					range: RANGES_LAST_24_HOURS,
+					sorting: sortings.SORTINGS_TOP,
+					range: ranges.RANGES_LAST_24_HOURS,
 				},
 			}),
 			h(CardStatistics, {
@@ -195,14 +190,14 @@ const RouteOverview = (props) => {
 				hook: useMergedLanguages,
 				hookArgs: [
 					{
-						sorting: SORTINGS_TOP,
-						range: RANGES_LAST_24_HOURS,
+						sorting: sortings.SORTINGS_TOP,
+						range: ranges.RANGES_LAST_24_HOURS,
 					},
 				],
 				renderer: RendererList,
 				rendererProps: {
-					sorting: SORTINGS_TOP,
-					range: RANGES_LAST_24_HOURS,
+					sorting: sortings.SORTINGS_TOP,
+					range: ranges.RANGES_LAST_24_HOURS,
 				},
 			}),
 		)

@@ -1,12 +1,10 @@
-'use strict'
+import intervals from '../constants/intervals.js'
+import matchDomains from '../stages/matchDomains.js'
+import matchLimit from '../stages/matchLimit.js'
+import projectDuration from '../stages/projectDuration.js'
+import projectMinInterval from '../stages/projectMinInterval.js'
 
-const intervals = require('../constants/intervals')
-const matchDomains = require('../stages/matchDomains')
-const projectDuration = require('../stages/projectDuration')
-const projectMinInterval = require('../stages/projectMinInterval')
-const matchLimit = require('../stages/matchLimit')
-
-module.exports = (ids, interval, limit, dateDetails) => {
+export default (ids, interval, limit, dateDetails) => {
 	const aggregation = [
 		matchDomains(ids),
 		projectDuration(),

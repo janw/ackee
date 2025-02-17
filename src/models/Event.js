@@ -1,9 +1,7 @@
-'use strict'
+import mongoose from 'mongoose'
+import { v4 as uuid } from 'uuid'
+import events from '../constants/events.js'
 
-const mongoose = require('mongoose')
-const uuid = require('uuid').v4
-
-const events = require('../constants/events')
 
 const isKnownType = (value) => [
 	events.EVENTS_TYPE_TOTAL_CHART,
@@ -40,4 +38,4 @@ const schema = new mongoose.Schema({
 	},
 })
 
-module.exports = mongoose.model('Event', schema)
+export default mongoose.model('Event', schema)

@@ -1,9 +1,9 @@
-import { createElement as h, Fragment, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import { Fragment, createElement as h, useRef, useState } from 'react'
+import Context, { BUTTON as DROPDOWN_BUTTON, SEPARATOR as DROPDOWN_SEPARATOR } from './Context.js'
+import IconChevronDown from './icons/IconChevronDown.js'
 
-import Context, { BUTTON as DROPDOWN_BUTTON, SEPARATOR as DROPDOWN_SEPARATOR } from './Context'
-import IconChevronDown from './icons/IconChevronDown'
 
 const BUTTON = Symbol()
 const DROPDOWN = Symbol()

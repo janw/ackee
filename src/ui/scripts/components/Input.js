@@ -1,4 +1,4 @@
-import { createElement as h, useRef, useEffect } from 'react'
+import { createElement as h, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 const copyInput = (e) => {

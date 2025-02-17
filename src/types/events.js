@@ -1,8 +1,6 @@
-'use strict'
+import gql from 'graphql-tag'
 
-const { gql } = require('apollo-server-micro')
-
-module.exports = gql`
+export default gql`
 	enum EventType {
 		"""
 		The UI will display the data of this event as a bar chart with totalized values.

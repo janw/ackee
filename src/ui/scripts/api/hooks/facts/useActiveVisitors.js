@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import enhanceFacts from '../../../enhancers/enhanceFacts'
+import enhanceFacts from '../../../enhancers/enhanceFacts.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchActiveVisitors($id: ID!) {

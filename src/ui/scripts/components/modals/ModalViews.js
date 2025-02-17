@@ -1,17 +1,14 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import { VIEWS_TYPE_UNIQUE, VIEWS_TYPE_TOTAL } from '../../../../constants/views'
-
-import Headline from '../Headline'
-import Text from '../Text'
-import CurrentStatus from '../CurrentStatus'
-import PresentationCounterList from '../presentations/PresentationCounterList'
-
-import useCombinedViews from '../../api/hooks/views/useCombinedViews'
-import relativeFn from '../../utils/relativeFn'
-import formatCount from '../../utils/formatCount'
-import commonModalProps from '../../utils/commonModalProps'
+import { createElement as h } from 'react'
+import views from '../../../../constants/views.js'
+import CurrentStatus from '../CurrentStatus.js'
+import Headline from '../Headline.js'
+import PresentationCounterList from '../presentations/PresentationCounterList.js'
+import Text from '../Text.js'
+import useCombinedViews from '../../api/hooks/views/useCombinedViews.js'
+import commonModalProps from '../../utils/commonModalProps.js'
+import formatCount from '../../utils/formatCount.js'
+import relativeFn from '../../utils/relativeFn.js'
 
 const ModalViews = (props) => {
 	const { value, status } = useCombinedViews({
@@ -21,8 +18,8 @@ const ModalViews = (props) => {
 	})
 
 	const headline = ({
-		[VIEWS_TYPE_UNIQUE]: 'Site Views',
-		[VIEWS_TYPE_TOTAL]: 'Page Views',
+		[views.VIEWS_TYPE_UNIQUE]: 'Site Views',
+		[views.VIEWS_TYPE_TOTAL]: 'Page Views',
 	})[props.type]
 
 	return (

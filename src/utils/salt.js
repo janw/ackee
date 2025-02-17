@@ -1,7 +1,5 @@
-'use strict'
-
-const crypto = require('crypto')
-const schedule = require('node-schedule')
+import crypto from 'node:crypto'
+import schedule from 'node-schedule'
 
 const generate = () => crypto.randomBytes(16).toString('hex')
 let salt = generate()
@@ -12,4 +10,4 @@ rule.hour = 0
 
 schedule.scheduleJob(rule, () => salt = generate())
 
-module.exports = () => salt
+export default () => salt

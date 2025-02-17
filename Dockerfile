@@ -9,11 +9,11 @@ COPY build.js ./
 COPY src ./src
 COPY dist ./dist
 
-RUN NODE_ENV=production npm run build:pre
+RUN NODE_ENV=production npm run build
 
 
 FROM node:22-alpine
-WORKDIR /srv/app/
+WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN set -e; \
@@ -23,10 +23,10 @@ RUN set -e; \
 COPY src ./src
 COPY --from=build /build/dist ./dist
 
-RUN adduser -D ackee ackee && chown -R ackee:ackee /srv/app
+RUN adduser -D ackee ackee && chown -R ackee:ackee /app
 USER ackee
 
-HEALTHCHECK --interval=1m --timeout=45s CMD [ "/srv/app/src/healthcheck.js" ]
+HEALTHCHECK --interval=1m --timeout=45s CMD [ "/app/src/healthcheck.js" ]
 
 EXPOSE 3000
 

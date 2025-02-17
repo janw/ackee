@@ -1,9 +1,7 @@
-'use strict'
+import { v4 as uuid } from 'uuid'
+import test from 'ava'
+import layout from '../../src/utils/layout.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const layout = require('../../src/utils/layout')
 
 test('return HTML with body', (t) => {
 	const body = uuid()

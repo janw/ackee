@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = (...args) => {
+export default (...args) => {
 	return Array.prototype.slice.call(args, 1).reduce((a, b) => {
 		return (...args) => Promise.resolve(a(...args)).then((result) => {
 			if (result == null) return b(...args)

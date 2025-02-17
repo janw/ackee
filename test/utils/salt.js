@@ -1,8 +1,6 @@
-'use strict'
+import test from 'ava'
+import salt from '../../src/utils/salt.js'
 
-const test = require('ava')
-
-const salt = require('../../src/utils/salt')
 
 test('return same result as long as it is the same day', (t) => {
 	const a = salt()

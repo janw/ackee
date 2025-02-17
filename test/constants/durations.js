@@ -1,8 +1,6 @@
-'use strict'
+import test from 'ava'
+import durations from '../../src/constants/durations.js'
 
-const test = require('ava')
-
-const durations = require('../../src/constants/durations')
 
 test('is an object', (t) => {
 	t.is(typeof durations, 'object')

@@ -2,7 +2,7 @@
 
 const COOKIE_NAME = 'ackee_ignore'
 
-module.exports = {
+export default{
 	isSet: (cookie = '') => cookie.includes(`${ COOKIE_NAME }=1`),
 	on: {
 		name: COOKIE_NAME,

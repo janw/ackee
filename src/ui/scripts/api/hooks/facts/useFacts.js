@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import factsFields from '../../fragments/factsFields'
-import enhanceFacts from '../../../enhancers/enhanceFacts'
+import enhanceFacts from '../../../enhancers/enhanceFacts.js'
+import factsFields from '../../fragments/factsFields.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchFacts($id: ID!) {

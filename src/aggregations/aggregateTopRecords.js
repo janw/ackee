@@ -1,9 +1,7 @@
-'use strict'
+import ranges from '../constants/ranges.js'
+import matchDomains from '../stages/matchDomains.js'
 
-const ranges = require('../constants/ranges')
-const matchDomains = require('../stages/matchDomains')
-
-module.exports = (ids, properties, range, limit, dateDetails, or) => {
+export default (ids, properties, range, limit, dateDetails, or) => {
 	const aggregation = [
 		matchDomains(ids),
 		{

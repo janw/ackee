@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import listField from '../../fragments/listField'
-import enhanceEventList from '../../../enhancers/enhanceEventList'
+import enhanceEventList from '../../../enhancers/enhanceEventList.js'
+import listField from '../../fragments/listField.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchEventListEntries($id: ID!, $sorting: Sorting!, $type: EventListType!, $range: Range) {

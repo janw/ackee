@@ -1,8 +1,6 @@
-'use strict'
+import matchDomains from '../stages/matchDomains.js'
 
-const matchDomains = require('../stages/matchDomains')
-
-module.exports = (ids, properties, limit, or) => {
+export default (ids, properties, limit, or) => {
 	const aggregation = [
 		matchDomains(ids),
 		{

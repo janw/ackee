@@ -1,20 +1,18 @@
-'use strict'
+import browsers from '../database/browsers.js'
+import devices from '../database/devices.js'
+import durations from '../database/durations.js'
+import languages from '../database/languages.js'
+import pages from '../database/pages.js'
+import referrers from '../database/referrers.js'
+import sizes from '../database/sizes.js'
+import systems from '../database/systems.js'
+import views from '../database/views.js'
+import requireAuth from '../middlewares/requireAuth.js'
+import domainIds from '../utils/domainIds.js'
+import pipe from '../utils/pipe.js'
+import recursiveId from '../utils/recursiveId.js'
 
-const views = require('../database/views')
-const pages = require('../database/pages')
-const referrers = require('../database/referrers')
-const durations = require('../database/durations')
-const systems = require('../database/systems')
-const devices = require('../database/devices')
-const browsers = require('../database/browsers')
-const sizes = require('../database/sizes')
-const languages = require('../database/languages')
-const pipe = require('../utils/pipe')
-const domainIds = require('../utils/domainIds')
-const recursiveId = require('../utils/recursiveId')
-const requireAuth = require('../middlewares/requireAuth')
-
-module.exports = {
+export default {
 	DomainStatistics: {
 		id: pipe(requireAuth, async (domain) => {
 			const ids = await domainIds(domain)

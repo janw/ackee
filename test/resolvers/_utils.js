@@ -1,27 +1,25 @@
-'use strict'
+import { MongoMemoryServer } from 'mongodb-memory-server';
+import mongoose from 'mongoose';
+import fetch from 'node-fetch';
+import Action from '../../src/models/Action.js';
+import Domain from '../../src/models/Domain.js';
+import Event from '../../src/models/Event.js';
+import PermanentToken from '../../src/models/PermanentToken.js';
+import Record from '../../src/models/Record.js';
+import Token from '../../src/models/Token.js';
+import connect from '../../src/utils/connect.js';
+import createArray from '../../src/utils/createArray.js';
+import { day, minute } from '../../src/utils/times.js';
 
-const { MongoMemoryServer } = require('mongodb-memory-server')
-const mongoose = require('mongoose')
-const fetch = require('node-fetch')
-
-const Token = require('../../src/models/Token')
-const PermanentToken = require('../../src/models/PermanentToken')
-const Domain = require('../../src/models/Domain')
-const Event = require('../../src/models/Event')
-const Record = require('../../src/models/Record')
-const Action = require('../../src/models/Action')
-const connect = require('../../src/utils/connect')
-const createArray = require('../../src/utils/createArray')
-const { day, minute } = require('../../src/utils/times')
 
 const mongoDb = MongoMemoryServer.create()
 
-const connectToDatabase = async () => {
+export const connectToDatabase = async () => {
 	const dbUrl = (await mongoDb).getUri()
 	return connect(dbUrl)
 }
 
-const fillDatabase = async (t) => {
+export const fillDatabase = async (t) => {
 	// Saves to context so tests can access ids
 	t.context.token = await Token.create({})
 	t.context.permanentToken = await PermanentToken.create({ title: 'Example' })
@@ -65,7 +63,7 @@ const fillDatabase = async (t) => {
 	await Action.insertMany(actions)
 }
 
-const cleanupDatabase = async (t) => {
+export const cleanupDatabase = async (t) => {
 	await Token.findOneAndDelete({
 		id: t.context.token.id,
 	})
@@ -74,12 +72,12 @@ const cleanupDatabase = async (t) => {
 	})
 }
 
-const disconnectFromDatabase = async () => {
+export const disconnectFromDatabase = async () => {
 	mongoose.disconnect()
 	;(await mongoDb).stop()
 }
 
-const api = async (base, body, token, headers = {}) => {
+export const api = async (base, body, token, headers = {}) => {
 	const url = new URL('/api', await base)
 
 	const defaultHeaders = {}
@@ -101,7 +99,7 @@ const api = async (base, body, token, headers = {}) => {
 	}
 }
 
-module.exports = {
+export default {
 	connectToDatabase,
 	fillDatabase,
 	cleanupDatabase,

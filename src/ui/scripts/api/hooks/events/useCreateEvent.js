@@ -1,7 +1,6 @@
-import { useMutation, gql } from '@apollo/client'
-
-import addAndSortModify from '../../utils/addAndSortModify'
-import eventFields from '../../fragments/eventFields'
+import { gql, useMutation } from '@apollo/client'
+import eventFields from '../../fragments/eventFields.js'
+import addAndSortModify from '../../utils/addAndSortModify.js'
 
 const MUTATION = gql`
 	mutation createEvent($input: CreateEventInput!) {

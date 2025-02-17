@@ -1,7 +1,7 @@
-import { createElement as h, Component } from 'react'
 import PropTypes from 'prop-types'
+import { Component, createElement as h } from 'react'
+import OverlayFailure from './overlays/OverlayFailure.js'
 
-import OverlayFailure from './overlays/OverlayFailure'
 
 const ErrorBoundary = class extends Component {
 	constructor(props) {

@@ -1,17 +1,15 @@
-import { useReducer, useCallback } from 'react'
-
-import { version } from '../../../../package.json'
-import { SORTINGS_TOP } from '../../../constants/sortings'
-import { RANGES_LAST_7_DAYS } from '../../../constants/ranges'
-import { INTERVALS_DAILY } from '../../../constants/intervals'
-import { VIEWS_TYPE_UNIQUE } from '../../../constants/views'
-import { REFERRERS_TYPE_WITH_SOURCE } from '../../../constants/referrers'
-import { DEVICES_TYPE_WITH_MODEL } from '../../../constants/devices'
-import { BROWSERS_TYPE_WITH_VERSION } from '../../../constants/browsers'
-import { SIZES_TYPE_BROWSER_RESOLUTION } from '../../../constants/sizes'
-import { SYSTEMS_TYPE_WITH_VERSION } from '../../../constants/systems'
-
-import createStorage from '../utils/createStorage'
+import { useCallback, useReducer } from 'react'
+import version from '../../../../package.json'
+import browsers from '../../../constants/browsers.js'
+import devices from '../../../constants/devices.js'
+import intervals from '../../../constants/intervals.js'
+import ranges from '../../../constants/ranges.js'
+import referrers from '../../../constants/referrers.js'
+import sizes from '../../../constants/sizes.js'
+import sortings from '../../../constants/sortings.js'
+import systems from '../../../constants/systems.js'
+import views from '../../../constants/views.js'
+import createStorage from '../utils/createStorage.js'
 
 const SET_SORTING_FILTER = Symbol()
 const SET_RANGE_FILTER = Symbol()
@@ -27,15 +25,15 @@ const RESET_FILTERS = Symbol()
 // The key should include the package version so we can increase the version number
 // when the structure of the state has changed to avoid loading an outdated state.
 const { get, set, reset } = createStorage(`ackee_filter_${ version }`, {
-	sorting: SORTINGS_TOP,
-	range: RANGES_LAST_7_DAYS,
-	interval: INTERVALS_DAILY,
-	viewsType: VIEWS_TYPE_UNIQUE,
-	referrersType: REFERRERS_TYPE_WITH_SOURCE,
-	devicesType: DEVICES_TYPE_WITH_MODEL,
-	browsersType: BROWSERS_TYPE_WITH_VERSION,
-	sizesType: SIZES_TYPE_BROWSER_RESOLUTION,
-	systemsType: SYSTEMS_TYPE_WITH_VERSION,
+	sorting: sortings.SORTINGS_TOP,
+	range: ranges.RANGES_LAST_7_DAYS,
+	interval: intervals.INTERVALS_DAILY,
+	viewsType: views.VIEWS_TYPE_UNIQUE,
+	referrersType: referrers.REFERRERS_TYPE_WITH_SOURCE,
+	devicesType: devices.DEVICES_TYPE_WITH_MODEL,
+	browsersType: browsers.BROWSERS_TYPE_WITH_VERSION,
+	sizesType: sizes.SIZES_TYPE_BROWSER_RESOLUTION,
+	systemsType: systems.SYSTEMS_TYPE_WITH_VERSION,
 })
 
 const reducer = (state, action) => {

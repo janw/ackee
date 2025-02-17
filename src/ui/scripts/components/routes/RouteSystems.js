@@ -1,11 +1,9 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import useDomains from '../../api/hooks/domains/useDomains'
-import useSystems from '../../api/hooks/systems/useSystems'
-
-import CardStatistics from '../cards/CardStatistics'
-import RendererList from '../renderers/RendererList'
+import { createElement as h } from 'react'
+import useDomains from '../../api/hooks/domains/useDomains.js'
+import useSystems from '../../api/hooks/systems/useSystems.js'
+import CardStatistics from '../cards/CardStatistics.js'
+import RendererList from '../renderers/RendererList.js'
 
 const RouteSystems = (props) => {
 	const domains = useDomains()

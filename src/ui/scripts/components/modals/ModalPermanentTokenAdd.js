@@ -1,14 +1,12 @@
 import { createElement as h } from 'react'
-
-import Input from '../Input'
-import Label from '../Label'
-import Spinner from '../Spinner'
-import Spacer from '../Spacer'
-
-import useCreatePermanentToken from '../../api/hooks/permanentTokens/useCreatePermanentToken'
-import useInputs from '../../hooks/useInputs'
-import commonModalProps from '../../utils/commonModalProps'
-import shortId from '../../utils/shortId'
+import Input from '../Input.js'
+import Label from '../Label.js'
+import Spacer from '../Spacer.js'
+import Spinner from '../Spinner.js'
+import useCreatePermanentToken from '../../api/hooks/permanentTokens/useCreatePermanentToken.js'
+import useInputs from '../../hooks/useInputs.js'
+import commonModalProps from '../../utils/commonModalProps.js'
+import shortId from '../../utils/shortId.js'
 
 const ModalPermanentTokenAdd = (props) => {
 	const createPermanentToken = useCreatePermanentToken()

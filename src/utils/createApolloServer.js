@@ -1,42 +1,39 @@
-'use strict'
-
-const {
-	ApolloServerPluginLandingPageGraphQLPlayground: apolloServerPluginLandingPageGraphQLPlayground,
-	ApolloServerPluginLandingPageDisabled: apolloServerPluginLandingPageDisabled,
-} = require('apollo-server-core')
-const httpHeadersPlugin = require('apollo-server-plugin-http-headers')
-const {
-	UnsignedIntResolver,
-	UnsignedIntTypeDefinition,
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import { ApolloServerPluginLandingPageLocalDefault, ApolloServerPluginLandingPageProductionDefault } from '@apollo/server/plugin/landingPage/default';
+import {
 	DateTimeResolver,
 	DateTimeTypeDefinition,
 	PositiveFloatResolver,
 	PositiveFloatTypeDefinition,
-} = require('graphql-scalars')
+	UnsignedIntResolver,
+	UnsignedIntTypeDefinition,
+} from 'graphql-scalars';
+import resolvers from '../resolvers/index.js';
+import types from '../types/index.js';
+import config from './config.js';
 
-const config = require('./config')
-
-module.exports = (ApolloServer, options) => new ApolloServer({
+export default (ApolloServer, httpServer, options) => new ApolloServer({
 	introspection: config.isDemoMode === true || config.isDevelopmentMode === true,
 	playground: config.isDemoMode === true || config.isDevelopmentMode === true,
 	debug: config.isDevelopmentMode === true,
 	plugins: [
-		httpHeadersPlugin,
+		new ApolloServerPluginDrainHttpServer({httpServer}),
+		// HttpHeadersPlugin,  // FIXME: re-add
 		(config.isDemoMode === true || config.isDevelopmentMode === true) ?
-			apolloServerPluginLandingPageGraphQLPlayground() :
-			apolloServerPluginLandingPageDisabled(),
+			new ApolloServerPluginLandingPageLocalDefault() :
+			new ApolloServerPluginLandingPageProductionDefault(),
 	],
 	typeDefs: [
 		UnsignedIntTypeDefinition,
 		DateTimeTypeDefinition,
 		PositiveFloatTypeDefinition,
-		require('../types'),
+		types,
 	],
 	resolvers: {
 		UnsignedInt: UnsignedIntResolver,
 		DateTime: DateTimeResolver,
 		PositiveFloat: PositiveFloatResolver,
-		...require('../resolvers'),
+		...resolvers,
 	},
 	...options,
 })

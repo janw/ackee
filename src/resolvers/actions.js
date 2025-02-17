@@ -1,9 +1,7 @@
-'use strict'
-
-const KnownError = require('../utils/KnownError')
-const messages = require('../utils/messages')
-const events = require('../database/events')
-const actions = require('../database/actions')
+import actions from '../database/actions.js'
+import events from '../database/events.js'
+import KnownError from '../utils/KnownError.js'
+import messages from '../utils/messages.js'
 
 const polish = (obj) => {
 	return Object.entries(obj).reduce((acc, [ key, value ]) => {
@@ -16,7 +14,7 @@ const polish = (obj) => {
 	}, {})
 }
 
-module.exports = {
+export default {
 	Mutation: {
 		createAction: async (parent, { eventId, input }, { isIgnored }) => {
 			// Ignore your own actions when logged in

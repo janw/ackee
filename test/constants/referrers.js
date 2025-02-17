@@ -1,8 +1,6 @@
-'use strict'
+import test from 'ava'
+import referrers from '../../src/constants/referrers.js'
 
-const test = require('ava')
-
-const referrers = require('../../src/constants/referrers')
 
 test('is an object', (t) => {
 	t.is(typeof referrers, 'object')

@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = () => {
+export default () => {
 	// The time that elapsed between the creation and updating of records.
 	return {
 		$project: {

@@ -1,14 +1,11 @@
-'use strict'
-
-const { utcToZonedTime } = require('date-fns-tz')
-
-const Record = require('../models/Record')
-const aggregateViews = require('../aggregations/aggregateViews')
-const constants = require('../constants/views')
-const intervals = require('../constants/intervals')
-const createArray = require('../utils/createArray')
-const matchesDate = require('../utils/matchesDate')
-const recursiveId = require('../utils/recursiveId')
+import { toZonedTime } from 'date-fns-tz'
+import aggregateViews from '../aggregations/aggregateViews.js'
+import intervals from '../constants/intervals.js'
+import constants from '../constants/views.js'
+import Record from '../models/Record.js'
+import createArray from '../utils/createArray.js'
+import matchesDate from '../utils/matchesDate.js'
+import recursiveId from '../utils/recursiveId.js'
 
 const get = async (ids, type, interval, limit, dateDetails) => {
 	const aggregation = (() => {
@@ -27,7 +24,7 @@ const get = async (ids, type, interval, limit, dateDetails) => {
 			// Database entries include the day, month and year in the
 			// timezone of the user. We therefore need to match it against a
 			// date in the timezone of the user.
-			const userZonedDate = utcToZonedTime(date, dateDetails.userTimeZone)
+			const userZonedDate = toZonedTime(date, dateDetails.userTimeZone)
 
 			// Find a entry that matches the date
 			const entry = entries.find((entry) => {
@@ -58,6 +55,6 @@ const get = async (ids, type, interval, limit, dateDetails) => {
 	)
 }
 
-module.exports = {
+export default {
 	get,
 }

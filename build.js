@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-'use strict'
 
-const { index, styles, scripts, tracker, build } = require('./src/ui/index')
+
+import { build, index, scripts, styles, tracker } from './src/ui/index.js'
 
 build('dist/index.css', styles)
 build('dist/index.js', scripts)

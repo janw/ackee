@@ -1,9 +1,7 @@
-'use strict'
+import { v4 as uuid } from 'uuid'
+import test from 'ava'
+import identifier from '../../src/utils/identifier.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const identifier = require('../../src/utils/identifier')
 
 test('return different identifiers', (t) => {
 	const domainId = uuid()

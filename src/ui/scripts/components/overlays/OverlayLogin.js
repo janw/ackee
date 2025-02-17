@@ -1,17 +1,14 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import { homepage } from '../../../../../package.json'
-
-import Input from '../Input'
-import Spacer from '../Spacer'
-import Headline from '../Headline'
-import Text from '../Text'
-import Spinner from '../Spinner'
-import Message from '../Message'
-
-import useCreateToken from '../../api/hooks/tokens/useCreateToken'
-import useInputs from '../../hooks/useInputs'
+import { createElement as h } from 'react'
+import homepage from '../../../../../package.json'
+import useCreateToken from '../../api/hooks/tokens/useCreateToken.js'
+import useInputs from '../../hooks/useInputs.js'
+import Headline from '../Headline.js'
+import Input from '../Input.js'
+import Message from '../Message.js'
+import Spacer from '../Spacer.js'
+import Spinner from '../Spinner.js'
+import Text from '../Text.js'
 
 const OverlayLogin = (props) => {
 	const createToken = useCreateToken()

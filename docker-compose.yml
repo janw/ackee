@@ -1,27 +1,42 @@
-version: "2"
 services:
   ackee:
+    container_name: ackee
+    restart: always
     image: ghcr.io/janw/ackee
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ackee
-    restart: always
     ports:
       - "3000:3000"
     environment:
+      - NODE_ENV=development
       - WAIT_HOSTS=mongo:27017
       - ACKEE_MONGODB=mongodb://mongo:27017/ackee
-    env_file:
-      - .env
+      - ACKEE_USERNAME=admin
+      - ACKEE_PASSWORD=admin
     depends_on:
       - mongo
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+            - src/ui
+        - action: rebuild
+          path: ./src/ui
+        - action: rebuild
+          path: ./package.json
+
   mongo:
-    image: mongo
     container_name: mongo
+    image: mongo
     restart: always
     volumes:
-      - ./data:/data/db
-
+      - data:/data/db
     ports:
       - "27017:27017"
+
+volumes:
+  data:

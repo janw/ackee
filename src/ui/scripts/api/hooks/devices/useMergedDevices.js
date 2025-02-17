@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import devicesField from '../../fragments/devicesField'
-import enhanceDevices from '../../../enhancers/enhanceDevices'
+import enhanceDevices from '../../../enhancers/enhanceDevices.js'
+import devicesField from '../../fragments/devicesField.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchMergedDevices($sorting: Sorting!, $type: DeviceType!, $range: Range) {

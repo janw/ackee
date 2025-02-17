@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import sizesField from '../../fragments/sizesField'
-import enhanceSizes from '../../../enhancers/enhanceSizes'
+import enhanceSizes from '../../../enhancers/enhanceSizes.js'
+import sizesField from '../../fragments/sizesField.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchMergedSizes($sorting: Sorting!, $type: SizeType!, $range: Range) {

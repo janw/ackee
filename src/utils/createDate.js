@@ -1,10 +1,8 @@
-'use strict'
+import { startOfDay, startOfMonth, startOfYear, subDays, subHours, subMilliseconds, subMonths, subYears } from 'date-fns'
+import intervals from '../constants/intervals.js'
+import serverTimeZone from './timeZone.js'
 
-const { subMilliseconds, subHours, subDays, subMonths, subYears, startOfDay, startOfMonth, startOfYear } = require('date-fns')
-const serverTimeZone = require('./timeZone')
-const intervals = require('../constants/intervals')
-
-module.exports = (userTimeZone = serverTimeZone) => {
+export default (userTimeZone = serverTimeZone) => {
 	const currentDate = new Date()
 
 	// This is the biggest, positive timezone offset possible (starting from UTC).

@@ -1,9 +1,7 @@
-'use strict'
-
 const SYSTEMS_TYPE_WITH_VERSION = 'WITH_VERSION'
 const SYSTEMS_TYPE_NO_VERSION = 'NO_VERSION'
 
-module.exports = {
+export default {
 	SYSTEMS_TYPE_WITH_VERSION,
 	SYSTEMS_TYPE_NO_VERSION,
 }

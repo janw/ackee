@@ -1,20 +1,17 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import * as events from '../../../../constants/events'
-
-import Input from '../Input'
-import Select from '../Select'
-import Textarea from '../Textarea'
-import Label from '../Label'
-import Spacer from '../Spacer'
-import Tooltip from '../Tooltip'
-
-import useUpdateEvent from '../../api/hooks/events/useUpdateEvent'
-import useDeleteEvent from '../../api/hooks/events/useDeleteEvent'
-import useInputs from '../../hooks/useInputs'
-import commonModalProps from '../../utils/commonModalProps'
-import shortId from '../../utils/shortId'
+import { createElement as h } from 'react'
+import * as events from '../../../../constants/events.js'
+import Input from '../Input.js'
+import Label from '../Label.js'
+import Select from '../Select.js'
+import Spacer from '../Spacer.js'
+import Textarea from '../Textarea.js'
+import Tooltip from '../Tooltip.js'
+import useDeleteEvent from '../../api/hooks/events/useDeleteEvent.js'
+import useUpdateEvent from '../../api/hooks/events/useUpdateEvent.js'
+import useInputs from '../../hooks/useInputs.js'
+import commonModalProps from '../../utils/commonModalProps.js'
+import shortId from '../../utils/shortId.js'
 
 const ModalEventEdit = (props) => {
 	const updateEvent = useUpdateEvent(props.id)

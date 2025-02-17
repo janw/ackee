@@ -1,4 +1,4 @@
-import createArray from '../../../utils/createArray'
+import createArray from '../../../utils/createArray.js'
 
 export default (durations = [], length) => createArray(length).map((_, index) => {
 	const duration = durations[index]

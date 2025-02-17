@@ -1,11 +1,12 @@
-'use strict'
+import fetch from 'node-fetch'
+import { v4 as uuid } from 'uuid'
+import server from '../src/server.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-const listen = require('test-listen')
-const fetch = require('node-fetch')
+import test from 'ava'
 
-const server = require('../src/server')
+
+import listen from 'test-listen'
+
 
 const base = listen(server)
 

@@ -1,9 +1,7 @@
-'use strict'
+import { v4 as uuid } from 'uuid'
+import test from 'ava'
+import aggregateRecentRecords from '../../src/aggregations/aggregateRecentRecords.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const aggregateRecentRecords = require('../../src/aggregations/aggregateRecentRecords')
 
 test('return aggregation', (t) => {
 	const result = aggregateRecentRecords(uuid(), [ 'osName', 'osVersion' ])

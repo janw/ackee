@@ -1,10 +1,9 @@
-'use strict'
+import normalizeUrl from 'normalize-url';
 
-const normalizeUrl = require('normalize-url')
-
-module.exports = (url) => normalizeUrl(url, {
+export default (url) => normalizeUrl(url, {
 	normalizeProtocol: false,
 	stripWWW: false,
 	removeTrailingSlash: false,
 	sortQueryParameters: false,
+	stripAuthentication: true,
 })

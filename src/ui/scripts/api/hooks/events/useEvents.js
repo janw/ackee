@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import eventFields from '../../fragments/eventFields'
+import eventFields from '../../fragments/eventFields.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchEvents {

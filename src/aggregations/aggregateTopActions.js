@@ -1,9 +1,7 @@
-'use strict'
+import ranges from '../constants/ranges.js'
+import matchEvents from '../stages/matchEvents.js'
 
-const ranges = require('../constants/ranges')
-const matchEvents = require('../stages/matchEvents')
-
-module.exports = (ids, average, range, limit, dateDetails) => {
+export default (ids, average, range, limit, dateDetails) => {
 	const aggregation = [
 		matchEvents(ids),
 		{

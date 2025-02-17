@@ -1,4 +1,4 @@
-import createArray from '../../../utils/createArray'
+import createArray from '../../../utils/createArray.js'
 
 export default (views = [], length) => createArray(length).map((_, index) => {
 	const view = views[index]
