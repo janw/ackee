@@ -29,7 +29,8 @@
     "build": "node build.js",
     "server": "node src/index.js",
     "coveralls": "nyc report --reporter=lcov",
-    "test": "npm run lint && nyc ava",
+    "test": "ava",
+    "test:cov": "nyc ava",
     "lint": "eslint \"{functions,src,test}/**/*.js\""
   },
   "dependencies": {

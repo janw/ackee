@@ -32,10 +32,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: yarn install --frozen-lockfile
+      - run: |
+          yarn install --frozen-lockfile
+          yarn build
 
-      - run: yarn test
-
+      - run: yarn test:cov
       - run: yarn coveralls
 
       - name: Parallel Coveralls report
