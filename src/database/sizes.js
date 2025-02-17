@@ -1,12 +1,10 @@
-'use strict'
-
-const Record = require('../models/Record')
-const aggregateTopRecords = require('../aggregations/aggregateTopRecords')
-const aggregateNewRecords = require('../aggregations/aggregateNewRecords')
-const aggregateRecentRecords = require('../aggregations/aggregateRecentRecords')
-const sortings = require('../constants/sortings')
-const constants = require('../constants/sizes')
-const recursiveId = require('../utils/recursiveId')
+import aggregateNewRecords from '../aggregations/aggregateNewRecords.js'
+import aggregateRecentRecords from '../aggregations/aggregateRecentRecords.js'
+import aggregateTopRecords from '../aggregations/aggregateTopRecords.js'
+import constants from '../constants/sizes.js'
+import sortings from '../constants/sortings.js'
+import Record from '../models/Record.js'
+import recursiveId from '../utils/recursiveId.js'
 
 const get = async (ids, sorting, type, range, limit, dateDetails) => {
 	const aggregation = (() => {
@@ -63,6 +61,6 @@ const get = async (ids, sorting, type, range, limit, dateDetails) => {
 	)
 }
 
-module.exports = {
+export default {
 	get,
 }

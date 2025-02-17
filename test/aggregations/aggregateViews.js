@@ -1,11 +1,8 @@
-'use strict'
-
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const aggregateViews = require('../../src/aggregations/aggregateViews')
-const intervals = require('../../src/constants/intervals')
-const createDate = require('../../src/utils/createDate')
+import test from 'ava';
+import { v4 as uuid } from 'uuid';
+import aggregateViews from '../../src/aggregations/aggregateViews.js';
+import intervals from '../../src/constants/intervals.js';
+import createDate from '../../src/utils/createDate.js';
 
 test('return unique aggregation', (t) => {
 	const result = aggregateViews(uuid(), true, intervals.INTERVALS_DAILY, 14, createDate())

@@ -1,6 +1,6 @@
-import { useMutation, gql } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
+import deleteIdModify from '../../utils/deleteIdModify.js'
 
-import deleteIdModify from '../../utils/deleteIdModify'
 
 const MUTATION = gql`
 	mutation deleteEvent($id: ID!) {

@@ -1,4 +1,4 @@
-module.exports = class KnownError extends Error {
+export default class KnownError extends Error {
 	constructor(message) {
 		super(message)
 		this.name = 'KnownError'

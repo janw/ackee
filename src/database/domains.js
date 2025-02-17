@@ -1,7 +1,5 @@
-'use strict'
-
-const Domain = require('../models/Domain')
-const sortByProp = require('../utils/sortByProp')
+import Domain from '../models/Domain.js'
+import sortByProp from '../utils/sortByProp.js'
 
 const response = (entry) => ({
 	id: entry.id,
@@ -69,7 +67,7 @@ const del = (id) => {
 	})
 }
 
-module.exports = {
+export default {
 	add,
 	all,
 	get,

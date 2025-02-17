@@ -1,17 +1,14 @@
-'use strict'
-
-const { utcToZonedTime } = require('date-fns-tz')
-
-const Action = require('../models/Action')
-const aggregateTopActions = require('../aggregations/aggregateTopActions')
-const aggregateNewActions = require('../aggregations/aggregateNewActions')
-const aggregateRecentActions = require('../aggregations/aggregateRecentActions')
-const aggregateActions = require('../aggregations/aggregateActions')
-const sortings = require('../constants/sortings')
-const intervals = require('../constants/intervals')
-const createArray = require('../utils/createArray')
-const matchesDate = require('../utils/matchesDate')
-const recursiveId = require('../utils/recursiveId')
+import { toZonedTime } from 'date-fns-tz'
+import aggregateActions from '../aggregations/aggregateActions.js'
+import aggregateNewActions from '../aggregations/aggregateNewActions.js'
+import aggregateRecentActions from '../aggregations/aggregateRecentActions.js'
+import aggregateTopActions from '../aggregations/aggregateTopActions.js'
+import intervals from '../constants/intervals.js'
+import sortings from '../constants/sortings.js'
+import Action from '../models/Action.js'
+import createArray from '../utils/createArray.js'
+import matchesDate from '../utils/matchesDate.js'
+import recursiveId from '../utils/recursiveId.js'
 
 const response = (entry) => ({
 	id: entry.id,
@@ -70,7 +67,7 @@ const getChart = async (ids, type, interval, limit, dateDetails) => {
 			// Database entries include the day, month and year in the
 			// timezone of the user. We therefore need to match it against a
 			// date in the timezone of the user.
-			const userZonedDate = utcToZonedTime(date, dateDetails.userTimeZone)
+			const userZonedDate = toZonedTime(date, dateDetails.userTimeZone)
 
 			// Find a entry that matches the date
 			const entry = entries.find((entry) => {
@@ -143,7 +140,7 @@ const del = (eventId) => {
 	})
 }
 
-module.exports = {
+export default {
 	add,
 	update,
 	getChart,

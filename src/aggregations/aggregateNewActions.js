@@ -1,8 +1,6 @@
-'use strict'
+import matchEvents from '../stages/matchEvents.js'
 
-const matchEvents = require('../stages/matchEvents')
-
-module.exports = (ids, limit) => {
+export default (ids, limit) => {
 	const aggregation = [
 		matchEvents(ids),
 		{

@@ -1,13 +1,12 @@
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import { createElement as h, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import useClickAway from '../hooks/useClickAway.js'
+import useMeasure from '../hooks/useMeasure.js'
+import toPixel from '../utils/toPixel.js'
+import KeyHint from './KeyHint.js'
 
-import useMeasure from '../hooks/useMeasure'
-import useClickAway from '../hooks/useClickAway'
-import toPixel from '../utils/toPixel'
-
-import KeyHint from './KeyHint'
 
 export const CONTENT = Symbol()
 export const BUTTON = Symbol()

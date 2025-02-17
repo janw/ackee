@@ -1,14 +1,12 @@
-'use strict'
+import domains from '../database/domains.js'
+import records from '../database/records.js'
+import blockDemoMode from '../middlewares/blockDemoMode.js'
+import requireAuth from '../middlewares/requireAuth.js'
+import KnownError from '../utils/KnownError.js'
+import messages from '../utils/messages.js'
+import pipe from '../utils/pipe.js'
 
-const records = require('../database/records')
-const domains = require('../database/domains')
-const KnownError = require('../utils/KnownError')
-const messages = require('../utils/messages')
-const pipe = require('../utils/pipe')
-const requireAuth = require('../middlewares/requireAuth')
-const blockDemoMode = require('../middlewares/blockDemoMode')
-
-module.exports = {
+export default {
 	Domain: {
 		facts: (parent) => parent,
 		statistics: (parent) => parent,

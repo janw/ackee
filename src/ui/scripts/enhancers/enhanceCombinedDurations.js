@@ -1,5 +1,5 @@
-import createArray from '../../../utils/createArray'
-import sortByProp from '../../../utils/sortByProp'
+import createArray from '../../../utils/createArray.js'
+import sortByProp from '../../../utils/sortByProp.js'
 
 export default (domains = [], length) => {
 	// Ensure that each day has at least an empty list

@@ -1,11 +1,10 @@
-'use strict'
+import fetch from 'node-fetch'
+import server from '../src/server.js'
 
-const test = require('ava')
-const listen = require('test-listen')
-const fetch = require('node-fetch')
-const mockedEnv = require('mocked-env')
+import test from 'ava'
+import mockedEnv from 'mocked-env'
+import listen from 'test-listen'
 
-const server = require('../src/server')
 
 const base = listen(server)
 

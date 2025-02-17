@@ -1,10 +1,10 @@
-import { createElement as h, useState } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import { createElement as h, useState } from 'react'
+import CurrentStatus from '../CurrentStatus.js'
+import Headline from '../Headline.js'
+import Text from '../Text.js'
 
-import Headline from '../Headline'
-import Text from '../Text'
-import CurrentStatus from '../CurrentStatus'
 
 const CardStatistics = (props) => {
 	const { value, status } = props.hook(...props.hookArgs)

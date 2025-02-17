@@ -1,10 +1,8 @@
-'use strict'
+import test from 'ava'
+import pino from 'pino'
+import log from '../../src/utils/log.js'
 
-const test = require('ava')
-const { Signale } = require('signale')
 
-const signale = require('../../src/utils/signale')
-
-test('is a Signale instance', (t) => {
-	t.true(signale instanceof Signale)
+test('is a Pino instance', (t) => {
+	t.true(log instanceof pino.pino)
 })

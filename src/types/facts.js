@@ -1,8 +1,6 @@
-'use strict'
+import gql from 'graphql-tag'
 
-const { gql } = require('apollo-server-micro')
-
-module.exports = gql`
+export default gql`
 	type AverageViews {
 		"""
 		Average number of views per day during the last 14 days, excluding the current day.

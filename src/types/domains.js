@@ -1,8 +1,6 @@
-'use strict'
+import gql from 'graphql-tag'
 
-const { gql } = require('apollo-server-micro')
-
-module.exports = gql`
+export default gql`
 	"""
 	Domains are required to track views. You can create as many domains as you want, but it's recommended to create on domain per project/site. This allows you to view facts and statistics separately.
 	"""

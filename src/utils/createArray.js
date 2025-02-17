@@ -1,3 +1,1 @@
-'use strict'
-
-module.exports = (length) => new Array(length).fill()
+export default (length) => new Array(length).fill()

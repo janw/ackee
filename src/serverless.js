@@ -1,12 +1,10 @@
-'use strict'
+import config from './utils/config.js'
+import connect from './utils/connect.js'
+import createApolloServer from './utils/createApolloServer.js'
+import { createServerlessContext } from './utils/createContext.js'
+import fullyQualifiedDomainNames from './utils/fullyQualifiedDomainNames.js'
 
 const { ApolloServer } = require('apollo-server-lambda')
-
-const config = require('./utils/config')
-const connect = require('./utils/connect')
-const fullyQualifiedDomainNames = require('./utils/fullyQualifiedDomainNames')
-const createApolloServer = require('./utils/createApolloServer')
-const { createServerlessContext } = require('./utils/createContext')
 
 if (config.dbUrl == null) {
 	throw new Error('MongoDB connection URI missing in environment')
@@ -43,7 +41,7 @@ const origin = (origin, callback) => {
 	return
 }
 
-exports.handler = (event, context) => {
+export default (event, context) => {
 	// Set request context which is missing on Vercel:
 	// https://stackoverflow.com/questions/71360059/apollo-server-lambda-unable-to-determine-event-source-based-on-event
 	if (event.requestContext == null) event.requestContext = context

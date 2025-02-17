@@ -1,9 +1,8 @@
-import { createElement as h, useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
+import { createElement as h, useCallback, useEffect, useState } from 'react'
+import relativeFn from '../../utils/relativeFn.js'
+import PresentationBarChart from '../presentations/PresentationBarChart.js'
 
-import relativeFn from '../../utils/relativeFn'
-
-import PresentationBarChart from '../presentations/PresentationBarChart'
 
 const textLabel = (active, interval) => {
 	return relativeFn(interval)(active)

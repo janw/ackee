@@ -1,15 +1,14 @@
 #!/usr/bin/env node
-'use strict'
-require('dotenv').config()
 
-const fetch = require('node-fetch')
+import 'dotenv/config'
+import fetch from 'node-fetch'
+import config from './utils/config.js'
+import checkMongoDB from './utils/connect.js'
+import log from './utils/log.js'
 
-const signale = require('./utils/signale')
-const config = require('./utils/config')
-const checkMongoDB = require('./utils/connect')
 
 if (config.dbUrl == null) {
-	signale.fatal('MongoDB connection URI missing in environment')
+	log.fatal('MongoDB connection URI missing in environment')
 	process.exit(1)
 }
 
@@ -38,12 +37,12 @@ const check = () => Promise.all([
 ])
 
 const handleSuccess = () => {
-	signale.success('Ackee is up and running')
+	log.success('Ackee is up and running')
 	exit(true)
 }
 
 const handleFailure = (error) => {
-	signale.fatal(error)
+	log.fatal(error)
 	exit(false)
 }
 

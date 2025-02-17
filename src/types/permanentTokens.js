@@ -1,8 +1,6 @@
-'use strict'
+import gql from 'graphql-tag'
 
-const { gql } = require('apollo-server-micro')
-
-module.exports = gql`
+export default gql`
 	type PermanentToken {
 		"""
 		Permanent token identifier. Use this value for authentication.

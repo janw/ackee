@@ -1,18 +1,15 @@
 import { createElement as h } from 'react'
-
-import * as events from '../../../../constants/events'
-
-import Input from '../Input'
-import Select from '../Select'
-import Label from '../Label'
-import Spinner from '../Spinner'
-import Spacer from '../Spacer'
-import Tooltip from '../Tooltip'
-
-import useCreateEvent from '../../api/hooks/events/useCreateEvent'
-import useInputs from '../../hooks/useInputs'
-import commonModalProps from '../../utils/commonModalProps'
-import shortId from '../../utils/shortId'
+import * as events from '../../../../constants/events.js'
+import Input from '../Input.js'
+import Label from '../Label.js'
+import Select from '../Select.js'
+import Spacer from '../Spacer.js'
+import Spinner from '../Spinner.js'
+import Tooltip from '../Tooltip.js'
+import useCreateEvent from '../../api/hooks/events/useCreateEvent.js'
+import useInputs from '../../hooks/useInputs.js'
+import commonModalProps from '../../utils/commonModalProps.js'
+import shortId from '../../utils/shortId.js'
 
 const ModalEventAdd = (props) => {
 	const createEvent = useCreateEvent()

@@ -1,22 +1,19 @@
-import { createElement as h, Fragment, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
-
-import * as routes from '../constants/routes'
-import useRoute from '../hooks/useRoute'
-
-import * as views from '../../../constants/views'
-import * as referrers from '../../../constants/referrers'
-import * as systems from '../../../constants/systems'
-import * as devices from '../../../constants/devices'
-import * as browsers from '../../../constants/browsers'
-import * as sizes from '../../../constants/sizes'
-import * as sortings from '../../../constants/sortings'
-import * as ranges from '../../../constants/ranges'
-import * as intervals from '../../../constants/intervals'
-
-import Context, { BUTTON, SEPARATOR } from './Context'
-import IconChevronDown from './icons/IconChevronDown'
+import { Fragment, createElement as h, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import * as routes from '../constants/routes.js'
+import useRoute from '../hooks/useRoute.js'
+import * as browsers from '../../../constants/browsers.js'
+import * as devices from '../../../constants/devices.js'
+import * as intervals from '../../../constants/intervals.js'
+import * as ranges from '../../../constants/ranges.js'
+import * as referrers from '../../../constants/referrers.js'
+import * as sizes from '../../../constants/sizes.js'
+import * as sortings from '../../../constants/sortings.js'
+import * as systems from '../../../constants/systems.js'
+import * as views from '../../../constants/views.js'
+import Context, { BUTTON, SEPARATOR } from './Context.js'
+import IconChevronDown from './icons/IconChevronDown.js'
 
 const labels = {
 	sortings: {

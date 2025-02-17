@@ -1,7 +1,7 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
+import { createElement as h } from 'react'
+import enhanceUrl from '../../enhancers/enhanceUrl.js'
 
-import enhanceUrl from '../../enhancers/enhanceUrl'
 
 const Row = (props) => {
 	const hasUrl = props.url != null

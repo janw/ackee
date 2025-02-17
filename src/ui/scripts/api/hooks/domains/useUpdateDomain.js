@@ -1,6 +1,6 @@
-import { useMutation, gql } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
+import domainFields from '../../fragments/domainFields.js'
 
-import domainFields from '../../fragments/domainFields'
 
 const MUTATION = gql`
 	mutation updateDomain($id: ID!, $input: UpdateDomainInput!) {

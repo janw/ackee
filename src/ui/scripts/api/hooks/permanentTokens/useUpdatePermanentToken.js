@@ -1,6 +1,6 @@
-import { useMutation, gql } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
+import permanentTokenFields from '../../fragments/permanentTokenFields.js'
 
-import permanentTokenFields from '../../fragments/permanentTokenFields'
 
 const MUTATION = gql`
 	mutation updatePermanentToken($id: ID!, $input: UpdatePermanentTokenInput!) {

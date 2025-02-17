@@ -1,4 +1,4 @@
-import createArray from '../../../utils/createArray'
+import createArray from '../../../utils/createArray.js'
 
 export default (chartEntries = [], length) => createArray(length).map((_, index) => {
 	const chartEntry = chartEntries[index]

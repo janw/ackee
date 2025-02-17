@@ -1,7 +1,5 @@
-'use strict'
-
-const Event = require('../models/Event')
-const sortByProp = require('../utils/sortByProp')
+import Event from '../models/Event.js'
+import sortByProp from '../utils/sortByProp.js'
 
 const response = (entry) => ({
 	id: entry.id,
@@ -69,7 +67,7 @@ const del = (id) => {
 	})
 }
 
-module.exports = {
+export default {
 	add,
 	all,
 	get,

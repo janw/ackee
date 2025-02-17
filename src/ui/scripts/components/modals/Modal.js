@@ -1,9 +1,9 @@
-import { createElement as h } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import { createElement as h } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
+import commonModalProps from '../../utils/commonModalProps.js'
 
-import commonModalProps from '../../utils/commonModalProps'
 
 const Modal = (props) => {
 	useHotkeys('esc', props.closeModal, {

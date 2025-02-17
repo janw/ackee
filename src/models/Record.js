@@ -1,8 +1,15 @@
-'use strict'
+import mongoose from 'mongoose';
+import { v4 as uuid } from 'uuid';
 
-const mongoose = require('mongoose')
-const uuid = require('uuid').v4
-const isUrl = require('is-url')
+
+const isUrl = (string) => {
+	try {
+		new URL(string);
+		return true;
+	} catch (error) {
+		return false;
+	}
+}
 
 const isNullOrUrl = (value) => value == null || isUrl(value)
 
@@ -96,4 +103,4 @@ const schema = new mongoose.Schema({
 	},
 })
 
-module.exports = mongoose.model('Record', schema)
+export default mongoose.model('Record', schema)

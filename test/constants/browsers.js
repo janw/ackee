@@ -1,8 +1,6 @@
-'use strict'
+import test from 'ava'
+import browsers from '../../src/constants/browsers.js'
 
-const test = require('ava')
-
-const browsers = require('../../src/constants/browsers')
 
 test('is an object', (t) => {
 	t.is(typeof browsers, 'object')

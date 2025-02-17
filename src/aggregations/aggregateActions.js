@@ -1,9 +1,7 @@
-'use strict'
+import intervals from '../constants/intervals.js'
+import matchEvents from '../stages/matchEvents.js'
 
-const intervals = require('../constants/intervals')
-const matchEvents = require('../stages/matchEvents')
-
-module.exports = (ids, average, interval, limit, dateDetails) => {
+export default (ids, average, interval, limit, dateDetails) => {
 	const aggregation = [
 		matchEvents(ids),
 		{

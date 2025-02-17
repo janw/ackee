@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = {
+export default {
 	aa: 'Afar',
 	ab: 'Abkhazian',
 	ae: 'Avestan',

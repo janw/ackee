@@ -1,7 +1,5 @@
-'use strict'
-
-const Record = require('../models/Record')
-const aggregateActiveVisitors = require('../aggregations/aggregateActiveVisitors')
+import aggregateActiveVisitors from '../aggregations/aggregateActiveVisitors.js'
+import Record from '../models/Record.js'
 
 const getActiveVisitors = async (ids, dateDetails) => {
 	const enhance = (entries) => {
@@ -16,6 +14,6 @@ const getActiveVisitors = async (ids, dateDetails) => {
 	)
 }
 
-module.exports = {
+export default {
 	getActiveVisitors,
 }

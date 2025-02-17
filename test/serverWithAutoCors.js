@@ -1,14 +1,11 @@
-'use strict'
+import test from 'ava'
+import mockedEnv from 'mocked-env'
+import fetch from 'node-fetch'
+import listen from 'test-listen'
+import Domain from '../src/models/Domain.js'
+import server from '../src/server.js'
+import { connectToDatabase, disconnectFromDatabase } from './resolvers/_utils.js'
 
-const test = require('ava')
-const listen = require('test-listen')
-const fetch = require('node-fetch')
-const mockedEnv = require('mocked-env')
-
-const server = require('../src/server')
-
-const Domain = require('../src/models/Domain')
-const { connectToDatabase, disconnectFromDatabase } = require('./resolvers/_utils')
 
 const base = listen(server)
 

@@ -1,15 +1,12 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import * as events from '../../../../constants/events'
-
-import useEvents from '../../api/hooks/events/useEvents'
-import useEventChartEntries from '../../api/hooks/events/useEventChart'
-import useEventListEntries from '../../api/hooks/events/useEventList'
-
-import CardStatistics from '../cards/CardStatistics'
-import RendererEventChart from '../renderers/RendererEventChart'
-import RendererList from '../renderers/RendererList'
+import { createElement as h } from 'react'
+import * as events from '../../../../constants/events.js'
+import useEventChartEntries from '../../api/hooks/events/useEventChart.js'
+import useEventListEntries from '../../api/hooks/events/useEventList.js'
+import useEvents from '../../api/hooks/events/useEvents.js'
+import CardStatistics from '../cards/CardStatistics.js'
+import RendererEventChart from '../renderers/RendererEventChart.js'
+import RendererList from '../renderers/RendererList.js'
 
 const cardProps = (event, props) => {
 	switch (event.type) {

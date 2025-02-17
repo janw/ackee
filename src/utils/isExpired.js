@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = (timestamp, ttl) => {
+export default (timestamp, ttl) => {
 	const current = Date.now()
 	const passed = current - timestamp
 

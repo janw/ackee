@@ -1,9 +1,7 @@
-'use strict'
-
 const VIEWS_TYPE_UNIQUE = 'UNIQUE'
 const VIEWS_TYPE_TOTAL = 'TOTAL'
 
-module.exports = {
+export default {
 	VIEWS_TYPE_UNIQUE,
 	VIEWS_TYPE_TOTAL,
 }

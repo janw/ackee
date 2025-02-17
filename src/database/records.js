@@ -1,6 +1,4 @@
-'use strict'
-
-const Record = require('../models/Record')
+import Record from '../models/Record.js'
 
 const response = (entry) => ({
 	id: entry.id,
@@ -103,7 +101,7 @@ const del = (domainId) => {
 	})
 }
 
-module.exports = {
+export default {
 	add,
 	update,
 	anonymize,

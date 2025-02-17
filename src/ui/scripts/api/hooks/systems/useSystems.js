@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import systemsField from '../../fragments/systemsField'
-import enhanceSystems from '../../../enhancers/enhanceSystems'
+import enhanceSystems from '../../../enhancers/enhanceSystems.js'
+import systemsField from '../../fragments/systemsField.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchSystems($id: ID!, $sorting: Sorting!, $type: SystemType!, $range: Range) {

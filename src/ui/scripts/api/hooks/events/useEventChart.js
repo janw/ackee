@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import chartField from '../../fragments/chartField'
-import enhanceEventChart from '../../../enhancers/enhanceEventChart'
+import enhanceEventChart from '../../../enhancers/enhanceEventChart.js'
+import chartField from '../../fragments/chartField.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchEventChartEntries($id: ID!, $interval: Interval!, $type: EventChartType!, $limit: Int) {

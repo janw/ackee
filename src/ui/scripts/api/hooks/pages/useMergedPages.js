@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client'
-
-import useQuery from '../../utils/useQuery'
-import pagesField from '../../fragments/pagesField'
-import enhancePages from '../../../enhancers/enhancePages'
+import enhancePages from '../../../enhancers/enhancePages.js'
+import pagesField from '../../fragments/pagesField.js'
+import useQuery from '../../utils/useQuery.js'
 
 const QUERY = gql`
 	query fetchMergedPages($sorting: Sorting!, $range: Range) {

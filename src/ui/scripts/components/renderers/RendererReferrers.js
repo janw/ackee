@@ -1,12 +1,9 @@
-import { createElement as h, useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
-
-import { SORTINGS_NEW, SORTINGS_RECENT } from '../../../../constants/sortings'
-
-import relativeDate from '../../utils/relativeDate'
-import rangeLabel from '../../utils/rangeLabel'
-
-import PresentationIconList from '../presentations/PresentationIconList'
+import { createElement as h, useCallback, useEffect, useState } from 'react'
+import sortings from '../../../../constants/sortings.js'
+import rangeLabel from '../../utils/rangeLabel.js'
+import relativeDate from '../../utils/relativeDate.js'
+import PresentationIconList from '../presentations/PresentationIconList.js'
 
 const textLabel = (item, range, isRecent, isNew) => {
 	if (item && item.date) return relativeDate(item.date)
@@ -25,7 +22,7 @@ const RendererReferrers = (props) => {
 	const onItemEnter = useCallback((index) => setActive(index), [ setActive ])
 	const onItemLeave = useCallback(() => setActive(), [ setActive ])
 
-	const label = textLabel(props.items[active], props.range, props.sorting === SORTINGS_RECENT, props.sorting === SORTINGS_NEW)
+	const label = textLabel(props.items[active], props.range, props.sorting === sortings.SORTINGS_RECENT, props.sorting === sortings.SORTINGS_NEW)
 	useEffect(() => props.setStatusLabel(label), [ label ])
 
 	return h(PresentationIconList, {

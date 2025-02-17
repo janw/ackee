@@ -1,9 +1,7 @@
-'use strict'
+import { v4 as uuid } from 'uuid'
+import test from 'ava'
+import messages from '../../src/utils/messages.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const messages = require('../../src/utils/messages')
 
 test('extract messages from an object with errors', (t) => {
 	const message = uuid()

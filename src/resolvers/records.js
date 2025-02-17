@@ -1,11 +1,9 @@
-'use strict'
-
-const KnownError = require('../utils/KnownError')
-const normalizeUrl = require('../utils/normalizeUrl')
-const identifier = require('../utils/identifier')
-const messages = require('../utils/messages')
-const domains = require('../database/domains')
-const records = require('../database/records')
+import domains from '../database/domains.js'
+import records from '../database/records.js'
+import identifier from '../utils/identifier.js'
+import KnownError from '../utils/KnownError.js'
+import messages from '../utils/messages.js'
+import normalizeUrl from '../utils/normalizeUrl.js'
 
 const normalizeSiteLocation = (siteLocation) => {
 	if (siteLocation == null) {
@@ -45,7 +43,7 @@ const polish = (obj) => {
 	}, {})
 }
 
-module.exports = {
+export default {
 	Mutation: {
 		createRecord: async (parent, { domainId, input }, { ip, userAgent, isIgnored }) => {
 			// Ignore your own records when logged in

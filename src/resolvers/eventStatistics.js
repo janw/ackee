@@ -1,10 +1,8 @@
-'use strict'
+import actions from '../database/actions.js'
+import requireAuth from '../middlewares/requireAuth.js'
+import pipe from '../utils/pipe.js'
 
-const actions = require('../database/actions')
-const pipe = require('../utils/pipe')
-const requireAuth = require('../middlewares/requireAuth')
-
-module.exports = {
+export default {
 	EventStatistics: {
 		id: pipe(requireAuth, (event) => {
 			return event.id

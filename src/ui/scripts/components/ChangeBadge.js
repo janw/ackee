@@ -1,8 +1,8 @@
-import { createElement as h } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { createElement as h } from 'react'
+import IconArrowRight from './icons/IconArrowRight.js'
 
-import IconArrowRight from './icons/IconArrowRight'
 
 const type = (value) => {
 	if (value > 5) return 'positive'

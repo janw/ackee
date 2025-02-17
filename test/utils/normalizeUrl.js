@@ -1,9 +1,7 @@
-'use strict'
+import { v4 as uuid } from 'uuid'
+import test from 'ava'
+import normalizeUrl from '../../src/utils/normalizeUrl.js'
 
-const test = require('ava')
-const uuid = require('uuid').v4
-
-const normalizeUrl = require('../../src/utils/normalizeUrl')
 
 test('remove directory index', (t) => {
 	const url = 'https://example.com/index.html'

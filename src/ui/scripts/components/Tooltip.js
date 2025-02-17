@@ -1,8 +1,8 @@
-import { createElement as h, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
+import { createElement as h, useRef, useState } from 'react'
+import Context, { CONTENT } from './Context.js'
+import IconQuestionMark from './icons/IconQuestionMark.js'
 
-import Context, { CONTENT } from './Context'
-import IconQuestionMark from './icons/IconQuestionMark'
 
 const calculateX = (measurement) => {
 	const padding = 10

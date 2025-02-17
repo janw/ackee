@@ -1,19 +1,7 @@
-'use strict'
-
-const { getClientIp } = require('request-ip')
-
-const config = require('./config')
-const isAuthenticated = require('./isAuthenticated')
-const createDate = require('./createDate')
-const ignoreCookie = require('./ignoreCookie')
-
-const createServerlessContext = (integrationContext) => {
-	return createContext(integrationContext.event.headers['client-ip'], integrationContext.event.headers)
-}
-
-const createMicroContext = (integrationContext) => {
-	return createContext(getClientIp(integrationContext.req), integrationContext.req.headers)
-}
+import config from './config.js'
+import createDate from './createDate.js'
+import ignoreCookie from './ignoreCookie.js'
+import isAuthenticated from './isAuthenticated.js'
 
 const createContext = async (ip, headers) => {
 	return {
@@ -30,7 +18,12 @@ const createContext = async (ip, headers) => {
 	}
 }
 
-module.exports = {
-	createServerlessContext,
-	createMicroContext,
+export const createServerlessContext = (integrationContext) => {
+	return createContext(integrationContext.event.headers['client-ip'], integrationContext.event.headers)
+}
+
+export const createExpressContext = (integrationContext) => {
+	const req = integrationContext.req
+	const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+	return createContext(ip, req.headers)
 }

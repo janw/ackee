@@ -1,8 +1,6 @@
-'use strict'
+import test from 'ava'
+import sortings from '../../src/constants/sortings.js'
 
-const test = require('ava')
-
-const sortings = require('../../src/constants/sortings')
 
 test('is an object', (t) => {
 	t.is(typeof sortings, 'object')

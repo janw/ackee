@@ -1,14 +1,12 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
-
-import { homepage } from '../../../../../package.json'
-import formatErrors from '../../utils/formatErrors'
-
-import Textarea from '../Textarea'
-import Spacer from '../Spacer'
-import Headline from '../Headline'
-import Text from '../Text'
-import Message from '../Message'
+import { createElement as h } from 'react'
+import homepage from '../../../../../package.json'
+import formatErrors from '../../utils/formatErrors.js'
+import Headline from '../Headline.js'
+import Message from '../Message.js'
+import Spacer from '../Spacer.js'
+import Text from '../Text.js'
+import Textarea from '../Textarea.js'
 
 const OverlayFailure = (props) => {
 	const onClick = () => {

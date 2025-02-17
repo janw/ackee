@@ -1,8 +1,8 @@
-import { createElement as h } from 'react'
 import PropTypes from 'prop-types'
+import { createElement as h } from 'react'
+import Loader from './Loader.js'
+import Updater from './Updater.js'
 
-import Loader from './Loader'
-import Updater from './Updater'
 
 export const ICON_LOADER = Loader
 export const ICON_UPDATER = Updater

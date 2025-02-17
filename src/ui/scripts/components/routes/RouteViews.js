@@ -1,16 +1,12 @@
-import { createElement as h, Fragment } from 'react'
 import PropTypes from 'prop-types'
-
-import { VIEWS_TYPE_UNIQUE, VIEWS_TYPE_TOTAL } from '../../../../constants/views'
-
-import { MODALS_VIEWS } from '../../constants/modals'
-
-import useDomains from '../../api/hooks/domains/useDomains'
-import useMergedViews from '../../api/hooks/views/useMergedViews'
-import useViews from '../../api/hooks/views/useViews'
-
-import CardStatistics from '../cards/CardStatistics'
-import RendererViews from '../renderers/RendererViews'
+import { Fragment, createElement as h } from 'react'
+import views from '../../../../constants/views.js'
+import modals from '../../constants/modals.js'
+import useDomains from '../../api/hooks/domains/useDomains.js'
+import useMergedViews from '../../api/hooks/views/useMergedViews.js'
+import useViews from '../../api/hooks/views/useViews.js'
+import CardStatistics from '../cards/CardStatistics.js'
+import RendererViews from '../renderers/RendererViews.js'
 
 const RouteViews = (props) => {
 	const domains = useDomains()
@@ -20,8 +16,8 @@ const RouteViews = (props) => {
 			h(CardStatistics, {
 				wide: true,
 				headline: ({
-					[VIEWS_TYPE_UNIQUE]: 'Site Views',
-					[VIEWS_TYPE_TOTAL]: 'Page Views',
+					[views.VIEWS_TYPE_UNIQUE]: 'Site Views',
+					[views.VIEWS_TYPE_TOTAL]: 'Page Views',
 				})[props.filters.viewsType],
 				hook: useMergedViews,
 				hookArgs: [
@@ -34,7 +30,7 @@ const RouteViews = (props) => {
 				renderer: RendererViews,
 				rendererProps: {
 					interval: props.filters.interval,
-					onItemClick: (index) => props.addModal(MODALS_VIEWS, {
+					onItemClick: (index) => props.addModal(modals.MODALS_VIEWS, {
 						index,
 						interval: props.filters.interval,
 						type: props.filters.viewsType,

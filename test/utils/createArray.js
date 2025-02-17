@@ -1,8 +1,6 @@
-'use strict'
+import test from 'ava'
+import createArray from '../../src/utils/createArray.js'
 
-const test = require('ava')
-
-const createArray = require('../../src/utils/createArray')
 
 test('return boolean', (t) => {
 	const length = 4

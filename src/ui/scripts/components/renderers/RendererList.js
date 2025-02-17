@@ -1,14 +1,11 @@
-import { createElement as h, useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
-
-import { SORTINGS_TOP, SORTINGS_RECENT } from '../../../../constants/sortings'
-
-import relativeDate from '../../utils/relativeDate'
-import rangeLabel from '../../utils/rangeLabel'
-import formatCount from '../../utils/formatCount'
-
-import PresentationCounterList from '../presentations/PresentationCounterList'
-import PresentationList from '../presentations/PresentationList'
+import { createElement as h, useCallback, useEffect, useState } from 'react'
+import sortings from '../../../../constants/sortings.js'
+import formatCount from '../../utils/formatCount.js'
+import rangeLabel from '../../utils/rangeLabel.js'
+import relativeDate from '../../utils/relativeDate.js'
+import PresentationCounterList from '../presentations/PresentationCounterList.js'
+import PresentationList from '../presentations/PresentationList.js'
 
 const textLabel = (item, range, isRecent) => {
 	if (item && item.date) return relativeDate(item.date)
@@ -24,10 +21,10 @@ const RendererList = (props) => {
 	const onItemEnter = useCallback((index) => setActive(index), [ setActive ])
 	const onItemLeave = useCallback(() => setActive(), [ setActive ])
 
-	const label = textLabel(props.items[active], props.range, props.sorting === SORTINGS_RECENT)
+	const label = textLabel(props.items[active], props.range, props.sorting === sortings.SORTINGS_RECENT)
 	useEffect(() => props.setStatusLabel(label), [ label ])
 
-	if (props.sorting === SORTINGS_TOP) return h(PresentationCounterList, {
+	if (props.sorting === sortings.SORTINGS_TOP) return h(PresentationCounterList, {
 		items: props.items,
 		formatter: formatCount,
 	})

@@ -1,8 +1,6 @@
-'use strict'
+import gql from 'graphql-tag'
 
-const { gql } = require('apollo-server-micro')
-
-module.exports = gql`
+export default gql`
 	enum ViewType {
 		"""
 		Unique site views.

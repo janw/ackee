@@ -1,16 +1,14 @@
-'use strict'
+import intervals from '../constants/intervals.js'
+import viewsType from '../constants/views.js'
+import durations from '../database/durations.js'
+import facts from '../database/facts.js'
+import views from '../database/views.js'
+import requireAuth from '../middlewares/requireAuth.js'
+import domainIds from '../utils/domainIds.js'
+import pipe from '../utils/pipe.js'
+import recursiveId from '../utils/recursiveId.js'
 
-const views = require('../database/views')
-const facts = require('../database/facts')
-const durations = require('../database/durations')
-const viewsType = require('../constants/views')
-const intervals = require('../constants/intervals')
-const pipe = require('../utils/pipe')
-const domainIds = require('../utils/domainIds')
-const recursiveId = require('../utils/recursiveId')
-const requireAuth = require('../middlewares/requireAuth')
-
-module.exports = {
+export default {
 	AverageViews: {
 		count: pipe(requireAuth, (entries) => {
 			const totalCount = entries.slice(1, 15).reduce((acc, entry) => acc + entry.count, 0)

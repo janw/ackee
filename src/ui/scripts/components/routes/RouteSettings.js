@@ -1,24 +1,15 @@
-import { createElement as h, Fragment } from 'react'
 import PropTypes from 'prop-types'
-
-import { version, homepage } from '../../../../../package.json'
-import useDeleteToken from '../../api/hooks/tokens/useDeleteToken'
-import useDomains from '../../api/hooks/domains/useDomains'
-import useEvents from '../../api/hooks/events/useEvents'
-import usePermanentTokens from '../../api/hooks/permanentTokens/usePermanentTokens'
-import {
-	MODALS_DOMAIN_ADD,
-	MODALS_DOMAIN_EDIT,
-	MODALS_EVENT_ADD,
-	MODALS_EVENT_EDIT,
-	MODALS_PERMANENT_TOKEN_ADD,
-	MODALS_PERMANENT_TOKEN_EDIT,
-} from '../../constants/modals'
-
-import CardSetting from '../cards/CardSetting'
-import LinkItem from '../LinkItem'
-import Line from '../Line'
-import Message from '../Message'
+import { Fragment, createElement as h } from 'react'
+import { homepage, version } from '../../../../../package.json'
+import useDomains from '../../api/hooks/domains/useDomains.js'
+import useEvents from '../../api/hooks/events/useEvents.js'
+import usePermanentTokens from '../../api/hooks/permanentTokens/usePermanentTokens.js'
+import useDeleteToken from '../../api/hooks/tokens/useDeleteToken.js'
+import modals from '../../constants/modals.js'
+import CardSetting from '../cards/CardSetting.js'
+import Line from '../Line.js'
+import LinkItem from '../LinkItem.js'
+import Message from '../Message.js'
 
 const LoadingMessage = (props) => {
 	return h(Message, { status: 'warning' }, `Loading ${ props.label }...`)
@@ -54,12 +45,12 @@ const RouteSettings = (props) => {
 		h(LinkItem, { type: 'button', onClick: createFn }, createLabel),
 	]
 
-	const showDomainAddModal = () => props.addModal(MODALS_DOMAIN_ADD)
-	const showDomainEditModal = (domain) => props.addModal(MODALS_DOMAIN_EDIT, domain)
-	const showEventAddModal = () => props.addModal(MODALS_EVENT_ADD)
-	const showEventEditModal = (event) => props.addModal(MODALS_EVENT_EDIT, event)
-	const showPermanentTokenAddModal = () => props.addModal(MODALS_PERMANENT_TOKEN_ADD)
-	const showPermanentTokenEditModal = (permanentToken) => props.addModal(MODALS_PERMANENT_TOKEN_EDIT, permanentToken)
+	const showDomainAddModal = () => props.addModal(modals.MODALS_DOMAIN_ADD)
+	const showDomainEditModal = (domain) => props.addModal(modals.MODALS_DOMAIN_EDIT, domain)
+	const showEventAddModal = () => props.addModal(modals.MODALS_EVENT_ADD)
+	const showEventEditModal = (event) => props.addModal(modals.MODALS_EVENT_EDIT, event)
+	const showPermanentTokenAddModal = () => props.addModal(modals.MODALS_PERMANENT_TOKEN_ADD)
+	const showPermanentTokenEditModal = (permanentToken) => props.addModal(modals.MODALS_PERMANENT_TOKEN_EDIT, permanentToken)
 
 	const domainsLoading = h(LoadingMessage, { label: 'domains' })
 	const eventsLoading = h(LoadingMessage, { label: 'events' })
