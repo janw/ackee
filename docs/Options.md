@@ -2,12 +2,15 @@
 
 The following environment variables are used by Ackee. You can also create a [`.env` file](https://www.npmjs.com/package/dotenv) in the root of the project to store all variables in one file.
 
-- [Database](#database)
-- [Port](#port)
-- [Username and password](#username-and-password)
-- [TTL](#ttl)
-- [Tracker](#tracker)
-- [Environment](#environment)
+- [Options](#options)
+  - [Database](#database)
+  - [Port](#port)
+  - [Username and password](#username-and-password)
+  - [TTL](#ttl)
+  - [Tracker](#tracker)
+  - [Environment](#environment)
+  - [CORS headers](#cors-headers)
+  - [Base URL](#base-url)
 
 ## Database
 
@@ -97,3 +100,13 @@ As opposed to manually configuring CORS domains, you can also automatically add 
 ```
 ACKEE_AUTO_ORIGIN=true
 ```
+
+## Base URL
+
+Change the url path at which Ackee listens. You can use this in conjunction with a reverse proxy like nginx or traefik to publish ackee on `https://example.com/ackee/` instead of `https://ackee.example.com/`
+
+```
+ACKEE_BASEURL=/ackee
+```
+
+*Do not add a trailing `/`.*

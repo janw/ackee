@@ -98,45 +98,50 @@ const apolloServer = createApolloServer(ApolloServer, {
 	context: createMicroContext,
 })
 
-const graphqlPath = '/api'
+const graphqlPath = `${ config.baseUrl }/api`
 const apolloHandler = apolloServer
 	.start()
 	.then(() => apolloServer.createHandler({ path: graphqlPath }))
 
 const routes = [
 
-	get('/', async (request, response) => {
+	get(`${ config.baseUrl }/`, async (request, response) => {
 		response.setHeader('Content-Type', 'text/html; charset=utf-8')
 		response.end(await index)
 	}),
-	get('/index.html', async (request, response) => {
+	get(`${ config.baseUrl }/index.html`, async (request, response) => {
 		response.setHeader('Content-Type', 'text/html; charset=utf-8')
 		response.end(await index)
 	}),
-	get('/favicon.ico', async (request, response) => {
+	get(`${ config.baseUrl }/favicon.ico`, async (request, response) => {
 		response.setHeader('Content-Type', 'image/vnd.microsoft.icon')
 		response.end(await favicon)
 	}),
-	get('/index.css', async (request, response) => {
+	get(`${ config.baseUrl }/index.css`, async (request, response) => {
 		response.setHeader('Content-Type', 'text/css; charset=utf-8')
 		response.end(await styles)
 	}),
-	get('/index.js', async (request, response) => {
+	get(`${ config.baseUrl }/index.js`, async (request, response) => {
 		response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
 		response.end(await scripts)
 	}),
-	get('/tracker.js', async (request, response) => {
+	get(`${ config.baseUrl }/tracker.js`, async (request, response) => {
 		response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
 		response.end(await tracker)
 	}),
-	customTracker.exists === true ? get(customTracker.url, async (request, response) => {
+	customTracker.exists === true ? get(`${ config.baseUrl }${ customTracker.url }`, async (request, response) => {
 		response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
 		response.end(await tracker)
+	}) : undefined,
+	config.baseUrl !== '' ? get(config.baseUrl, (request, response) => {
+		response.statusCode = 302
+		response.setHeader('Location', `${ config.baseUrl }/`)
+		response.end()
 	}) : undefined,
 
 	post(graphqlPath, awaitedHandler(apolloHandler)),
 	get(graphqlPath, awaitedHandler(apolloHandler)),
-	get('/.well-known/apollo/server-health', awaitedHandler(apolloHandler)),
+	get(`${ config.baseUrl }/.well-known/apollo/server-health`, awaitedHandler(apolloHandler)),
 
 	get('/*', notFound),
 	post('/*', notFound),
